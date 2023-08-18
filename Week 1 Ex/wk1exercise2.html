@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Wk1 Ex2 - HTML Tags</title>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <style>
+            .fav {
+                color: red;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <!--
+            ToDo: Try inputing different values to the following form and observe the outcome when Submit is clicked.
+			Also try to view this same file in a different browser (e.g. Firefox vs Chrome)
+			& observe if the "controls" look the same, and if the error messages are the same.
+        -->
+
+        <div id="div3">
+            <form>
+                <label for="colorInput">Color input:</label>
+                <br/>
+                <input type="color" name="colourInput" value="green" required>
+                <br/>
+
+                <label for="date">Date input: </label>
+                <br/>
+                <input type="date" name="date" required>
+                <br/>
+
+                <label for="Email">Email input:</label>
+                <br/> 
+                <input type="email" name="Email" required>
+                <br/>
+
+                <label for="File">File input:</label>
+                <br/>
+                <input type="file" name="File" required>
+                <br/>
+
+                <label for="num">Number input:</label>
+                <br/>
+                <input type="number" name="num" min="10" max="30" value="20" required>
+                <br/>
+
+                <label for="ranges">Range input:</label>
+                <br/>
+                <input type="range" min="10" max="50" value="10" required>
+                <br/>
+                
+                <label for="search">Search input:</label>
+                <br/>
+                <input type="search" required>
+                <br/>
+
+                <label for="tel">Tel input:</label>
+                <br/>
+                <input type="tel" pattern="[6,8,9],[0-9]{7}" required>
+                <br/>
+
+                <label for="time">Time input:</label>
+                <br/>
+                <input type="time" required> 
+                <br/>
+
+
+                <label for="url">Url input:</label>
+                <br/>
+                <input type="url" required>
+                <br/>
+
+                <input type="submit">
+            </form>
+        </div>
+       
+    </body>
+    
+</html>
