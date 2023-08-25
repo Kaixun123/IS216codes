@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	
+	<style>
+
+		/* Add your codes here */
+		/* you can make use of external css too */
+		
+	</style>
+
+</head>
+
+
+<body>
+
+	<ul>
+		<li><a class="active" href="home.html">Home</a></li>
+		<li><a href="register.html">Register</a></li>
+		<li><a href="feedback.html">Feedback</a></li>
+	  </ul>
+	<h2> Feedback Form</h2>
+		
+	<form>
+		<label for="mytitle">Title:&nbsp;&nbsp;&nbsp;</label>
+		<input type="text" name="title" id="mytitle" value="Title of Feedback" size="25" />
+		<br/>
+	
+		<label for="myname">Name:&nbsp;</label>
+		<input type="text" name="name" id="myname" value="Enter Your Name" size="25" />
+		<br/>
+		
+		<label for="feedbktype">Type: &nbsp;&nbsp;</label>
+		<select name="type" id="feedbktype">
+			<option value="inquiries">Inquiries</option>
+			<option value="feedbk" selected>Feedback</option>
+			<option value="suggestions">Suggestions</option>
+		</select>
+		<br/>
+		<br/>
+		<br/>
+
+		<label for="feedbkdetails">Feedback</label>
+		<br/>
+			<textarea name="details" id="feedbkdetails" rows="6" cols="50">Comments</textarea>
+		<br/>
+		<br/>
+		<br/>
+
+		<input type="reset"/>
+		<input type="submit"/>
+
+	</form>
+</body>
+</html>

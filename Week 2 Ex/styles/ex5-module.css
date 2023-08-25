@@ -1,0 +1,15 @@
+h2{
+    color: blue;
+}
+
+h3{
+    font-style: italic;
+}
+
+.cellbold{
+    font-weight: bold;
+}
+
+th{
+    font-weight: bold;
+}
