@@ -13,3 +13,20 @@ h3{
 th{
     font-weight: bold;
 }
+
+table,tr,td,th{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td{
+    width: 10%;
+}
+
+.redbox{
+    background-color: rgb(235, 113, 113);
+}
+
+.greenbox{
+    background-color: rgb(113, 244, 113);
+}

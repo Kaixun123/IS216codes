@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+    <link rel="stylesheet" href="styles/main-module.css">
+
     <style>
 
        	/* Add your codes here */
 		/* you can make use of external css too */
-    
+        div{
+            background-color: rgb(246, 246, 118);
+            padding-left: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        
+        .textinput{
+            width:auto;
+        }
+
+        input{
+            margin-bottom: 20px;
+        }
 
     </style>
 
@@ -15,8 +29,8 @@
 <body>
 
     <ul>
-        <li><a class="active" href="home.html">Home</a></li>
-        <li><a href="register.html">Register</a></li>
+        <li><a href="home.html">Home</a></li>
+        <li><a class="active" href="register.html">Register</a></li>
         <li><a href="feedback.html">Feedback</a></li>
     </ul>
 
@@ -26,7 +40,7 @@
     
     <form action>
         Name : <br>
-        <input type="text" name="name" value="Enter your name"></input>
+        <input class="textinput" type="text" name="name" value="Enter your name"></input>
         <br>
         Age : <br>
         <input type="number" name="age"></input>
