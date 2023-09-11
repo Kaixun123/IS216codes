@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<!--
+    Objectives:
+        To conduct more practices to get more familiar with Javascript syntax
+-->
+
+<html>
+    <head>
+        <title>JS Demo</title>
+    </head>
+
+    <body>
+        <p id="demo"></p>
+        <button onclick="showExtra1()">Extra1!</button>
+        <button onclick="showExtra2()">Extra2!</button>
+        <button onclick="showExtra3()">Extra3!</button>
+        <button onclick="showExtra4()">Extra4!</button>
+        <button onclick="showExtra5()">Extra5!</button>
+        <button onclick="showExtra6()">Extra6!</button>
+        <button onclick="showExtra7()">Extra7!</button>
+        <button onclick="showExtra8()">Extra8!</button>
+        <button onclick="showExtra9()">Extra9!</button>
+        <button onclick="showExtra10()">Extra10!</button>
+        <button onclick="showExtra11()">Extra11!</button>
+
+        <script>
+            /* 1. Write a function that computes and prints out the area and circumference of a circle of a given radius. 
+            The radius could be set to an int or float value. You can set the value of π to 3.14
+            Note: Use Math.PI()
+            
+            Formulas:
+            · Area of circle = π X radius2
+            · Circumference of circle = π X 2 X radius 
+            */
+            function showExtra1() {
+
+               // Add Code Here
+            
+               let p = Math.PI;
+               let r = prompt("what is your radius?");
+
+               area = p * parseFloat(r)**2;
+               circumference = p * 2 * parseFloat(r);
+               alert("Area of circle is " + area)
+               alert("Circumference of circle is " + circumference)
+
+            }
+
+            /* 2. Write a function that generates a random password of 8 characters
+                    For example, password -> cxqaptgh
+                    Note: use Math.random(), Math.floor()
+            */
+            function showExtra2() {
+                
+               // Add Code Here
+               var characters = 8;
+               password = "";
+               for(i=0;i<characters;i++){
+                password += String.fromCharCode(Math.floor(Math.random()*26)+97)
+               }
+               alert("Your random password is " + password);
+            }
+
+            /* 3. In number theory, a perfect number is a positive integer that is 
+                    equal to the sum of all its factors excluding itself.  
+                    For example 6 is a perfect number because the sum of its factors i.e. 1 + 2 + 3 = 6
+ 
+                    Write a function that takes in a positive integer. The function should then check 
+                    if the number entered is a perfect number or not and print the result. 
+                    You can assume that only positive integers are entered.
+                    Some examples of perfect numbers are 6, 28, 496
+            */
+            function showExtra3() {
+              
+               // Add Code Here
+
+               p_num = 28;
+               base_num = 0;
+               incr_num = 1;
+
+               for(i=0; i<=p_num/2; i++){
+                base_num = base_num + incr_num;
+                incr_num++;
+               }
+
+               if(p_num == base_num){
+                alert(p_num + " is a perfect number");
+               }else{
+                alert(p_num + " is not a perfect number");
+               }
+               
+            }
+
+
+            /* 4. Write a function that converts a given integer into a binary number
+                    For example, 10 -> 1010, 12 -> 1100
+            */
+            function showExtra4() {
+                
+               // Add Code Here
+               
+            }
+
+            /* 5. Write a function that requests the user’s name 
+                    so that it displays back with the surname in capital letters 
+                    and the rest of the name with first letter in uppercase. 
+           
+                    Assume the following:
+                        a) Two adjacent words of the name is separated by 1 space
+                        b) If the name has 1 word, it is the surname
+                        c) If the name has 2 words, the second word is the surname
+                        d) If the name has more than 2 words, the first word is always the surname
+
+                For example, tan -> TAN, tan wee kiat -> TAN Wee Kiat, mary lim -> LIM Mary
+
+                Hint: use toUpperCase(), charAt()
+            */
+            function showExtra5() {
+                
+               // Add Code Here
+               
+            }
+
+
+            /*  6. Write a function that asks the user to enter a string, 
+                say txt, and two characters, say st and en. 
+                The function then searches for a substring in txt such that 
+                the substring begins with the character st and ends with the character en. 
+                If there is no such substring, display the message "No such substring".
+
+                Assume that the search is case-sensitive and only search for 
+                the first occurrence of the substring
+
+                Hint: explore indexOf, search(), includes()
+
+                For example,
+                    txt = Fibonacci series
+                    st = F
+                    en = b
+                        ==> Substring [Fib] is found
+
+                    txt = Fibonacci series
+                    st = b
+                    en = y
+                        ==> No such substring
+
+                    txt = Fibonacci series
+                    st = F
+                    en = F
+                        ==> Substring [F] is found
+            */
+            function showExtra6() {
+                
+               // Add Code Here
+               
+
+            }
+
+             /* 7. Write a function that asks the user to enter two strings, 
+                say str1 and str2.
+                The function displays "Bingo!" if every character in str1 
+                also appears in str2. Otherwise, it displays "Nope :("
+
+                For example, 
+                    str1 = daily
+                    str2 = Holiday
+                        => Bingo!
+                    
+                    str1 = lily
+                    str2 = Holiday
+                        => Bingo!
+                    
+                    str1 = pokemon
+                    str2 = pogo
+                        => Nope :(
+                Hint: explore includes()
+            */
+            function showExtra7() {
+                
+               // Add Code Here
+               
+            }
+
+            /* 8. Write a function that requests two integers, 
+                say min and max. 
+                The function then displays all the perfect squares 
+                between min and max, inclusive. 
+
+                For example, given min=10 and max=110, 
+                it displays the perfect squares – 16 25 36 49 64 81 100.
+
+                Check that the user provides only numbers.
+
+                Hint: explore Math.sqrt(), Math.floor(), Math.ceil(), Math.pow()
+            */
+            function showExtra8() {
+                
+               // Add Code Here
+               
+            }
+
+            /* 9. Write a function that gets a set of integer inputs from the user. 
+                It should then display the minimum, maximum and median 
+                of all numbers entered.
+                Note: The median is the middle of list of numbers. 
+                
+                For example, median of numbers 12, 4, 5 is 5. 
+                In case of odd amount of numbers, the median is the exact 
+                middle number of numbers when arranged sorted. 
+                In case of even amount of numbers, 
+                we would get a pair of middle numbers. 
+                The median is half way between them. 
+                As an example, median of numbers 6, 12, 4, 10 is 8 (6 + 10) / 2 
+                because when placed in order the middle numbers would be 6 and 10.
+
+                Hint: explore split(), sort(), map()
+            */
+            function showExtra9() {
+                
+               // Add Code Here
+               
+            }
+
+            /* 10. Write a function that merges two arrays of objects, representing persons. 
+                   Each person object has name and age properties.
+                    For example, name="John", age=29
+                  
+                    The function merges the two arrays into a single array in which 
+                    the persons are ordered by their age.
+
+                    Note: Create your own arrays of objects in the function. Assume that names are unique
+                    Hint: explore concat()
+            */
+            function showExtra10() {
+
+                var persons1 = [{name:"John",age:29}, {name:"Jesper",age:21}, {name:"Jack", age:40}];
+                var persons2 = [{name:"Mary",age:23}, {name:"Jennifer",age:32}];
+                
+               // Add Code Here
+               
+               
+            }
+
+            /* 11. Write a function that computes the total amount to be paid, 
+                    based on an array of purchase items.
+                    A purchase item is an object, having name and price properties.
+                    For example, name="pencil", price=1.25
+                
+                    Note: Create your own arrays of objects in the function. 
+            */
+            function showExtra11() {
+                
+               // Add Code Here
+               
+            }
+
+        </script>
+    </body>
+    
+
+</html>

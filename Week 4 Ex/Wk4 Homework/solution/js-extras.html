@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<!--
+    Objectives:
+        To conduct more practices to get more familiar with Javascript syntax
+-->
+
+<html>
+    <head>
+        <title>JS Demo</title>
+    </head>
+
+    <body>
+        <p id="demo"></p>
+        <button onclick="showExtra1()">Extra1!</button>
+        <button onclick="showExtra2()">Extra2!</button>
+        <button onclick="showExtra3()">Extra3!</button>
+        <button onclick="showExtra4()">Extra4!</button>
+        <button onclick="showExtra5()">Extra5!</button>
+        <button onclick="showExtra6()">Extra6!</button>
+        <button onclick="showExtra7()">Extra7!</button>
+        <button onclick="showExtra8()">Extra8!</button>
+        <button onclick="showExtra9()">Extra9!</button>
+        <button onclick="showExtra10()">Extra10!</button>
+        <button onclick="showExtra11()">Extra11!</button>
+
+        <script>
+            /* 1. Write a function that computes and prints out the area and circumference of a circle of a given radius. 
+            The radius could be set to an int or float value. You can set the value of π to 3.14
+            Note: Use Math.PI()
+            
+            Formulas:
+            · Area of circle = π X radius2
+            · Circumference of circle = π X 2 X radius 
+            */
+            function showExtra1() {
+                var r = prompt("Provide a radius!");
+                var area = Math.PI * r * r;
+                var cir = Math.PI * 2 * r;
+
+                document.getElementById("demo").innerHTML = "Area: " + area.toFixed(2) + 
+                                                                    "<br> Circumference: " + cir.toFixed(2); 
+            }
+
+            /* 2. Write a function that generates a random password of 8 characters
+                    For example, password -> cxqaptgh
+                    Note: use Math.random(), Math.floor()
+            */
+            function showExtra2() {
+                var str = 'abcdefghijklmnopqrstuvwxyz';
+                var pwd = '';
+                for(var i=0;i<8;i++) {
+                    var val = Math.random(); // generate val btw 0-1
+                    val = val * str.length;
+                    console.log(val);
+                    val = Math.floor(val); // take the lower value
+                    console.log(val);
+                    var ch = str[val];
+                    pwd += ch;
+                }
+                document.getElementById("demo").innerHTML = "Generated Password: " + pwd;
+            }
+
+            /* 3. In number theory, a perfect number is a positive integer that is 
+                    equal to the sum of all its factors excluding itself.  
+                    For example 6 is a perfect number because the sum of its factors i.e. 1 + 2 + 3 = 6
+ 
+                    Write a function that takes in a positive integer. The function should then check 
+                    if the number entered is a perfect number or not and print the result. 
+                    You can assume that only positive integers are entered.
+                    Some examples of perfect numbers are 6, 28, 496
+            */
+            function showExtra3() {
+               var num = prompt("Please provide a number!");
+
+               if(isNaN(num)) {
+                    prompt("Please provide a number!");
+               }
+               num = Number(num);
+               var factors = [];
+               for (var i=1; i<num; i++) {
+                    if(num % i == 0) { // factor if remainder is zero
+                        factors.push(i);
+                    }
+               }
+
+               var sum = 0;
+               for (var factor of factors) {
+                    sum += factor;
+               }
+               var result;
+               if (num == sum) {
+                    result = "Perfect Number!";
+               } else {
+                   result = "Not Perfect Number!";
+               }
+               document.getElementById("demo").innerHTML = result;
+            }
+
+
+            /* 4. Write a function that converts a given integer into a binary number
+                    For example, 10 -> 1010, 12 -> 1100
+            */
+            function showExtra4() {
+                var num = prompt("Please provide an integer!");
+
+                num = Number(num)
+                if(isNaN(num) || !Number.isInteger(num)) {
+                    prompt("Please provide a valid integer!");
+               }
+
+                document.getElementById("demo").innerHTML = num.toString(2);
+            }
+
+            /* 5. Write a function that requests the user’s name 
+                    so that it displays back with the surname in capital letters 
+                    and the rest of the name with first letter in uppercase. 
+           
+                    Assume the following:
+                        a) Two adjacent words of the name is separated by 1 space
+                        b) If the name has 1 word, it is the surname
+                        c) If the name has 2 words, the second word is the surname
+                        d) If the name has more than 2 words, the first word is always the surname
+
+                For example, tan -> TAN, tan wee kiat -> TAN Wee Kiat, mary lim -> LIM Mary
+
+                Hint: use toUpperCase(), charAt()
+            */
+            function showExtra5() {
+                var name = prompt("Please provide your name!");
+                var result = '';
+
+                var arr = name.split(" ");
+
+                if(arr.length == 1) {
+
+                    result = arr.pop().toUpperCase();
+
+                } else if(arr.length == 2) { 
+                    // note: let is a var but only accessible with { }
+                    let first_word = arr.pop().toUpperCase();
+                    let second_word = arr[0][0].toUpperCase() + arr[0].substr(1);
+                    result = first_word + " " + second_word;
+
+                } else {
+                    /* result = arr[0].toUpperCase();
+                    let len = arr.length;
+                    for (let i=1; i< len; i++) {
+                        let word = arr[i];
+                        result += " " + word[0].toUpperCase() + word.substr(1);
+                    }  */
+                     
+                    // alternatively
+                    result = arr.shift().toUpperCase();
+                    while (arr.length) {
+                        word = arr.shift();
+                        result += " " + word[0].toUpperCase() + word.substr(1);
+                    } 
+                    
+                }
+
+                document.getElementById("demo").innerHTML = result;
+            }
+
+
+            /*  6. Write a function that asks the user to enter a string, 
+                say txt, and two characters, say st and en. 
+                The function then searches for a substring in txt such that 
+                the substring begins with the character st and ends with the character en. 
+                If there is no such substring, display the message "No such substring".
+
+                Assume that the search is case-sensitive and only search for 
+                the first occurrence of the substring
+
+                Hint: explore indexOf, search(), includes()
+
+                For example,
+                    txt = Fibonacci series
+                    st = F
+                    en = b
+                        ==> Substring [Fib] is found
+
+                    txt = Fibonacci series
+                    st = b
+                    en = y
+                        ==> No such substring
+
+                    txt = Fibonacci series
+                    st = F
+                    en = F
+                        ==> Substring [F] is found
+            */
+            function showExtra6() {
+                var txt = prompt("Enter the string");
+                var st = prompt("Enter the start char");
+                var en = prompt("Enter the end char");
+
+                var result = "";
+
+                if(txt.includes(st) && txt.includes(en)) {
+                    var stIdx = txt.indexOf(st);
+                    // start the search at stIdx position onwards
+                    // return -1 if en is not found
+                    var enIdx = txt.indexOf(en, stIdx);
+                    if(enIdx != -1) {
+                        result = "Substring [" + txt.slice(stIdx, ++enIdx) + "] is found";
+                    } else {
+                        result = "No such substring";
+                    }       
+                    
+                } else {
+                    result = "No such substring";
+                }
+                
+                document.getElementById("demo").innerHTML = result;
+
+            }
+
+             /* 7. Write a function that asks the user to enter two strings, 
+                say str1 and str2.
+                The function displays "Bingo!" if every character in str1 
+                also appears in str2. Otherwise, it displays "Nope :("
+
+                For example, 
+                    str1 = daily
+                    str2 = Holiday
+                        => Bingo!
+                    
+                    str1 = lily
+                    str2 = Holiday
+                        => Bingo!
+                    
+                    str1 = pokemon
+                    str2 = pogo
+                        => Nope :(
+                Hint: explore includes()
+            */
+            function showExtra7() {
+                var str1= prompt("Please enter a string!");
+                var str2= prompt("Please enter another string!");
+                var allIn = true;
+
+                for(var ch of str1) {
+                    if(!str2.includes(ch)) {
+                        allIn = false;
+                        break;
+                    }
+                }
+                if(allIn) {
+                    document.getElementById("demo").innerHTML = "Bingo!";
+                } else {
+                    document.getElementById("demo").innerHTML = "Nope :(";
+                }
+            }
+
+            /* 8. Write a function that requests two integers, 
+                say min and max. 
+                The function then displays all the perfect squares 
+                between min and max, inclusive. 
+
+                For example, given min=10 and max=110, 
+                it displays the perfect squares – 16 25 36 49 64 81 100.
+
+                Check that the user provides only numbers.
+
+                Hint: explore Math.sqrt(), Math.floor(), Math.ceil(), Math.pow()
+            */
+            function showExtra8() {
+                // min & max results in NaN if they r not number
+                var min= prompt("Please enter a min number!");
+                var max= prompt("Please enter a max number!");
+                var result = "";
+
+                if (isNaN(min) || isNaN(max)) {
+                    alert("You did not enter valid number!")
+                } else {
+                    var num = Math.ceil(Math.sqrt(min));
+                    while (Math.pow(num,2) <= max ) {
+                        result += Math.pow(num,2) + " ";
+                        num++;
+                    }
+                    document.getElementById("demo").innerHTML = result;
+                }
+            }
+
+            /* 9. Write a function that gets a set of integer inputs from the user. 
+                It should then display the minimum, maximum and median 
+                of all numbers entered.
+                Note: The median is the middle of list of numbers. 
+                
+                For example, median of numbers 12, 4, 5 is 5. 
+                In case of odd amount of numbers, the median is the exact 
+                middle number of numbers when arranged sorted. 
+                In case of even amount of numbers, 
+                we would get a pair of middle numbers. 
+                The median is half way between them. 
+                As an example, median of numbers 6, 12, 4, 10 is 8 (6 + 10) / 2 
+                because when placed in order the middle numbers would be 6 and 10.
+
+                Hint: explore split(), sort(), map()
+            */
+            function showExtra9() {
+                var numbers= prompt("Please enter a set of integer numbers, each number separated by a space!");
+            
+                var min, max, median, len, i;
+               
+                var arr = numbers.split(" ");
+                len = arr.length;
+
+                // first convert all elements into numbers
+                //var num_arr = arr.map(convert2Num);
+                isValid = true;
+                var num_arr = [];
+                for (ele of arr)  {
+                    var num = Number(ele);
+                    if (!Number.isInteger(num)) {
+                        alert("You entered an invalid integer!");
+                        isValid = false;
+                        break;
+                    }
+                    num_arr.push(num)
+                }
+                
+                if(isValid) {
+                    // sort() sorts the array alphabetically (not numerically)
+                    // to sort numerically, use callback function
+                    num_arr.sort(function (a, b) {return a-b}); // this sort in ascending order. for descending order, use b-a
+
+                    min = num_arr[0];
+                    max = num_arr[len-1];
+
+                    if (len % 2 == 0) { // even numbers
+                        i = len / 2;
+                        median = (num_arr[i-1] + num_arr[i]) / 2;
+                    } else { // odd numbers
+                        i = Math.floor(len/2);
+                        median = num_arr[i];
+                    }
+                    // console.log(num_arr);   
+                    document.getElementById("demo").innerHTML = "Numbers: " + num_arr + "<br>Min: " + 
+                                                                min + "<br>Max: " + max + "<br> Median: " + median;  
+                }                                                
+            }
+
+            function convert2Num(val) {
+                return Number(val);
+            }
+
+            /* 10. Write a function that merges two arrays of objects, representing persons. 
+                   Each person object has name and age properties.
+                    For example, name="John", age=29
+                  
+                    The function merges the two arrays into a single array in which 
+                    the persons are ordered by their age.
+
+                    Note: Create your own arrays of objects in the function. Assume that names are unique
+                    Hint: explore concat()
+            */
+            function showExtra10() {
+                var persons1 = [{name:"John",age:29}, {name:"Jesper",age:21}, {name:"Jack", age:40}];
+                var persons2 = [{name:"Mary",age:23}, {name:"Jennifer",age:32}];
+
+                // concat doesn't modify the existing arrays
+                // it creates a new array
+                var persons = persons1.concat(persons2);
+               
+                persons.sort(function (a, b) { return a.age-b.age });
+                console.log(persons);
+               
+                // var result = "";
+                persons.forEach(generateResult);
+               
+            }
+
+            function generateResult(item) {
+                // this doesn't work because result is not global scope. Its scope is only in showExtra10() 
+                // result += "Name: " + item.name + "Age: " + item.age + "<br>";
+
+                // this works as it's global access
+                document.getElementById("demo").innerHTML += "Name: " + item.name + "; Age: " + item.age + "<br>";
+            }
+
+            /* 11. Write a function that computes the total amount to be paid, 
+                    based on an array of purchase items.
+                    A purchase item is an object, having name and price properties.
+                    For example, name="pencil", price=1.25
+                
+                    Note: Create your own arrays of objects in the function. 
+            */
+            function showExtra11() {
+                
+                var items = [{name:"chicken", price:4.5}, {name:"cabbage", price:1.95},
+                                {name:"milk", price:2.4}, {name:"eggs", price:2}];
+               
+                var result = 0;
+                for (var item of items) {
+                    result += item.price;
+                }
+                document.getElementById("demo").innerHTML = "Amount to be paid: $" + result;
+            }
+
+        </script>
+    </body>
+    
+
+</html>

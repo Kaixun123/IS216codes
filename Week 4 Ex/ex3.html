@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript Calculator</title>
+</head>
+<body>
+
+	<script>
+        // Make a Calculator! 
+		//Function prompt() display a dialog window for user input
+        var firstNumber = prompt("Please provide the first number"); 
+        var secondNumber = prompt("Please provide the second number"); 
+		//TODO: compute the sum of the two numbers
+
+		function sum(first, second){
+			if(isNaN(firstNumber) || isNaN(secondNumber)){
+				var sum = parseFloat(firstNumber) + parseFloat(secondNumber);
+				alert("The sum of the two numbers is: " + sum);	
+			}else{
+				firstNumber = first;
+				secondNumber = second;
+				sum(firstNumber,secondNumber);
+			}
+		}
+
+
+		sum(firstNumber, secondNumber);
+		// var sum = parseFloat(firstNumber) + parseFloat(secondNumber);
+		// alert("The sum of the two numbers is: " + sum);	
+	
+		
+		//TODO: Use function alert() to display the sum of the two numbers
+		//TODO: Make your calculator as bullet-proof as possible (meaning account for situations when the user enters non-numbers).
+	</script>
+</body>
+</html>
