@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>wk5example7</title>
+</head>
+<body>
+  <a href="ex1.html" id="id1">ex1</a>
+  <a href="ex2.html">ex2</a>
+  <a href="ex3.html">ex3</a>
+  <img id="myPic" src="./emo1.png">  
+  
+  <script>
+     // e.g. 1: various ways to change the value of href attribute of the first <a> element
+	 
+	 // (1)
+	 var nodes = document.getElementsByTagName("a");
+     nodes[0].getAttributeNode("href").value = "ex5.html";
+	 
+     // (2) 
+	 // document.getElementsByTagName("a")[0].setAttribute("href", "ex5.html"); 
+	 
+	 // (3) 
+	 // document.getElementById("id1").getAttributeNode("href").value = "ex5.html"; 
+	 
+	 // (4)
+	 // document.getElementById("id1").href="ex5.html"; 
+	 
+     // e.g. 2: you can change the text displayed as well
+	 // document.getElementById("id1").text="ex5";
+	 
+	 // e.g. 3. change src of img element
+	 document.getElementById("myPic").src = "./emo2.png";
+  </script>
+</body>
+</html>

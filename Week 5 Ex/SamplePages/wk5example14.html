@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>wk5example14</title>
+</head>
+<body>  
+    <img id="myImg" src="./emo1.png">
+
+    <script>
+      var img = document.getElementById("myImg");
+	   
+      img.addEventListener("click", changeImage);
+      img.addEventListener("click", changeSize); // ok to have 2 click eventhandlers for the same element
+	   
+      img.addEventListener("mouseover", mOver);
+      img.addEventListener("mouseout", mOut);
+	  
+	  var showingEmo1 = true;
+
+      // event handlers
+      function mOver() {
+         img.style="border:5px solid black";
+      }
+
+      function mOut() {
+          img.style="";
+      }
+
+      function changeImage() {
+          img.src = "./emo2.png";
+		  
+		  /* try this!
+		  if (showingEmo1){
+		      img.src = "./emo2.png";
+			  showingEmo1 = false;
+		  }
+		  else{
+		      img.src = "./emo1.png";
+			  showingEmo1 = true;
+	      }
+		  */
+      }
+
+      function changeSize() {
+          img.width = 200;
+		  /* try this!
+		  if (img.width == 200){
+		      img.width = 100;
+		  }
+		  else{
+		      img.width = 200;
+	      }*/
+      }
+    </script>    
+      
+</body>    
+</html>

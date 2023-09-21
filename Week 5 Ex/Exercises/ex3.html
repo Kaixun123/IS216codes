@@ -1,0 +1,54 @@
+<html>
+   <head>
+      <title>Wk5 Ex3</title>
+   </head>
+   <body>
+     
+      <h1>Shopping List</h1>
+      <p>Get it done today</p>
+      
+        <!-- add HTML code here -->
+         <input type="text" id="input" placeholder="Enter item">
+         <button onclick="addItem()">Add</button>
+
+      <ul id="list">
+         <li id="item1">Notebook</li>
+         <li id="item2">Jello</li>
+         <li id="item3">Spinach</li>
+         <li id="item4">Rice</li>
+         <li id="item5">Birthday Cake</li>
+         <li id="item6">Candles</li>
+      </ul>
+      
+      <script>
+        
+         for (i=1; i < 7;i++){
+            var deleteButton = document.createElement("button");
+            deleteButton.textContent = "delete";
+            document.getElementById("item" + i).appendChild(deleteButton);
+
+         }
+
+        // add code here
+      function addItem(){
+         var input = document.getElementById("input").value;
+         var list = document.getElementById("list");
+         var li = document.createElement("li");
+         var deleteButton = document.createElement("button");
+         deleteButton.textContent = "delete";
+
+         deleteButton.onclick = function (){
+             var list = document.getElementById("list");
+             list.removeChild(li);
+         }
+
+         li.innerText = input;
+         li.appendChild(deleteButton);
+         list.appendChild(li);
+      
+        }
+
+      </script>
+ 
+   </body>
+</html>

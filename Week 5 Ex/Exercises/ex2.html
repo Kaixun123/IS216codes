@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk5 Ex2</title>
+    <style>
+
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: goldenrod;
+        }
+
+        /* add CSS code here */
+        #div2{
+            width: 200px;
+            height: 200px;
+            background-color: goldenrod;
+            border-radius: 50%;
+        }
+    </style>
+
+    
+</head>
+<body>
+    
+    <h2>Changing HTML Attribute Value</h2>
+
+    <div id="div1"></div>
+    <br/>
+    <button onclick="changeShape()">Make a change!</button>
+
+    <script>
+        
+       // add code here
+        function changeShape(){
+            var div1 = document.getElementById("div1");
+            var div2 = document.getElementById("div2");
+            if(div1.style.borderRadius == ""){
+                div1.style.borderRadius = "50%";
+                div2.style.borderRadius = "";
+            }else{
+                div1.style.borderRadius = "";
+                div2.style.borderRadius = "50%";
+            }
+          
+        }
+    </script>
+
+</body>
+</html>

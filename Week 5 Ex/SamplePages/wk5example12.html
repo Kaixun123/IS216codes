@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>wk5example12</title>
+</head>
+<body>
+    <!-- part 1 -->
+	Part 1<br>
+    <div onmouseover="mOver(this)" onmouseout="mOut(this)">
+        Mouse Over Me
+    </div>
+    <hr>
+    
+    <!-- part 2 -->
+    Part 2<br>
+	First name: <input type="text" onfocus="mFocus(this)" onfocusout="mFocusOut(this)"><br>
+	Last name: <input type="text"">
+    <p>When the 1st input field gets focus, a function is triggered which changes the background-color.</p>
+    <hr>
+
+    <!-- part 3 -->
+    Part 3<br>
+	<h2 onmouseover="style.color='red';style.backgroundColor='yellow'" onmouseout="style.color='black'">
+        Mouse over this text
+    </h2>
+
+    <script>
+	    // used by part 1
+        function mOver(obj) {
+            obj.innerHTML = "Thank You"
+        }
+
+        function mOut(obj) {
+            obj.innerHTML = "Mouse Over Me"
+        }
+
+        // used by part 2
+        function mFocus(obj) {
+            obj.style.backgroundColor = "yellow";
+        }
+		
+		function mFocusOut(obj) {
+            obj.style.backgroundColor = "white";
+        }
+    </script>
+
+</body>
+</html>

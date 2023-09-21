@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>wk5example9</title>
+</head>
+<body>
+  <div id="div1">
+    <p id="p1">This is a paragraph.</p>
+    <p id="p2">This is another paragraph.</p>
+  </div>
+  
+  <script>
+    //create an element 
+    var para = document.createElement("p");
+    //create a node
+    var node = document.createTextNode("This is new.");
+    //append the node to the element
+    para.appendChild(node);
+
+    //access the div1 element
+    var element = document.getElementById("div1");
+    //append the element created above to the div1 element
+    element.appendChild(para);
+  </script>  
+</body>    
+</html>

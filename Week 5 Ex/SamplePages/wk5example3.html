@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>wk5example3</title>
+</head>
+
+<body>
+  Email: <input type="text" id="email" name="email">
+  Password: <input type="password" name="password">
+  
+  <input type="submit" value="Submit" onclick="validateForm()">
+  <script>
+    function validateForm() {
+      // getElementsByName returns a collection since it is possible for >1 HTML element to have the same name. In this case, there is only 1 element returned. 
+      console.log(document.getElementsByName("password")[0].type);   
+	  console.log(document.getElementsByName("password")[0].value);
+      // console.log(document.getElementsByName("password")[1].type);   // will cause an error
+	  // console.log(document.getElementsByName("password")[1].value);
+	  
+	  // getElementById returns one node. 
+      var input = document.getElementById("email").value;
+      if (input.indexOf("@") == -1) {
+        alert("Invalid email address!")
+      }
+    }
+  </script>
+</body>
+
+</html>

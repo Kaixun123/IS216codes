@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>wk5example6</title>
+</head>
+<body>
+  <div id="div1">Hi…</h1>
+  <script>
+      var element = document.getElementById("div1");
+      element.innerHTML = "<p style='color:blue;'>blue says hi</p>";
+      // element.innerText = "<p style='color:blue;'>blue says hi</p>";  // try this!
+  </script>
+
+  <p>
+  What is your name? <input id="name"><br><button onclick="showMyName()">Enter</button>
+
+  <div id="showName"></div>
+  </p>
+  <script>
+    function showMyName () {
+      var inEle = document.getElementById("name");
+      var outEle = document.getElementById("showName");
+      outEle.innerText = "Good Morning, " + inEle.value;
+	  
+	  /*  
+	      Using innerHTML like this below poses a security risk
+	      uncomment the previous statement and try entering "<img src='x' onerror='alert(1)'>" into the textbox, and see what happens. 
+	      See https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
+	  */
+	  //outEle.innerHTML = "Good Morning, " + inEle.value;
+    }
+  </script>   
+</body>
+</html>

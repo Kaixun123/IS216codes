@@ -76,19 +76,22 @@
                // Add Code Here
 
                p_num = 28;
-               base_num = 0;
-               incr_num = 1;
+               base_num = 1;
+               incr_num = 2;
 
-               for(i=0; i<=p_num/2; i++){
+               while(base_num<p_num){
                 base_num = base_num + incr_num;
                 incr_num++;
+                
                }
 
                if(p_num == base_num){
-                alert(p_num + " is a perfect number");
-               }else{
-                alert(p_num + " is not a perfect number");
-               }
+                    console.log(base_num)
+                    alert(p_num + " is a perfect number");
+                }else{
+                    console.log(base_num)
+                    alert(p_num + " is not a perfect number");
+                }    
                
             }
 
@@ -99,7 +102,12 @@
             function showExtra4() {
                 
                // Add Code Here
-               
+               num = parseInt(prompt("Please enter a number (with no decmail point)"));
+
+               binary = num.toString(2);
+
+               alert("The binary code for the number you given is " + binary);
+
             }
 
             /* 5. Write a function that requests the user’s name 
@@ -119,7 +127,31 @@
             function showExtra5() {
                 
                // Add Code Here
-               
+
+               const name = prompt("Please enter your name: ");
+               const array = name.split(" ");
+               new_name = "";
+
+               console.log(array.length)
+
+               for (i=0; i<array.length; i++){
+                if(array.length == 1){
+                    new_name = name.toUpperCase();
+                }else if (array.length == 2){
+                    array[1] = array[1].toUpperCase();
+                    array[0] = array[0].charAt(0).toUpperCase() + array[0].slice(1);
+                    names = array.toString();
+                    new_name = names.replaceAll(",", " ");
+                }else{
+                    array[0] = array[0].toUpperCase();
+                    array[i] = array[i].charAt(0).toUpperCase() + array[i].slice(1);
+                    names = array.toString();
+                    new_name = names.replaceAll(",", " ");
+                }
+               }
+
+               alert("Welcome " + new_name);
+               console.log(new_name);
             }
 
 
@@ -152,8 +184,25 @@
             */
             function showExtra6() {
                 
-               // Add Code Here
-               
+                // Add Code Here
+                const txt = "Fibonacci Series";
+                substring = txt.split("");
+                str = '';
+
+                console.log(substring);
+
+                const st = "F";
+                const en = "b";
+
+                for(i=0; i<substring.length; i++){
+                    if(substring[i] = st){
+                        
+                    }else{
+                        alert("No such substring");
+                        break;
+                    }
+                }
+
 
             }
 
@@ -252,7 +301,7 @@
             function showExtra11() {
                 
                // Add Code Here
-               
+               var items = [{name:"pencil",price:1.25}, {name:"book",price:5}, {name:"pen",price:2.50}]
             }
 
         </script>

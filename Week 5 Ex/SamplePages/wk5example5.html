@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>wk5example5</title>
+</head>
+<body>
+  <a href="ex1.html" target="_blank" >ex1</a>
+  <a href="ex2.html"                 >ex2</a>
+  <a href="ex3.html" type="text/html">ex3</a>
+  
+  <script>
+     var nodes = document.getElementsByTagName("a");
+	 
+	 // loop through each <a> element
+     for (var node of nodes) {
+        // this returns a string - the value of href attribute
+        var attr = node.getAttribute("href");
+        console.log(attr); // -> ex1.html, ex2.html, etc.
+  
+        /* try this!
+        // loop through attr names of each <a> element
+		for (var attrName of node.getAttributeNames()) {
+           // returns a string – the name of the attr 
+           console.log(attrName); // -> href
+        } 
+		*/
+     }
+     
+    // get the href attribute of the first <a> element 
+    // as an attribute node
+    //var attrNode = nodes[0].getAttributeNode("href");
+  </script>
+  
+</body>
+</html>

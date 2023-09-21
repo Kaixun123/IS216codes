@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>wk5example4</title>
+</head>
+
+<body>
+  <!-- 1st form -->
+  <form id="frm1" action="#">
+    Name: <input type="text" name="name">
+    <input type="submit" value="Submit">
+  </form>
+  <hr>
+
+  <!-- 2nd form -->
+  <form id="frm2" action="#">
+    Name: <input type="text" name="name">
+    <input type="submit" value="Submit">
+  </form>
+  <hr>
+
+  <!-- button -->
+  <button onclick="display()">Click Me!</button>
+  <p id="frmEle"></p>
+
+
+  <script>
+    function display() {
+      //the following finds the form with id "frm1"
+      var x = document.forms["frm1"];
+      var i, out = "";
+
+      //the following reads the inputs in the form one-by-one
+      for (i = 0; i < x.length; i++) {
+        out += x.elements[i].value + "<br>";
+      }
+
+      //the following sets the content of the element with id "frmEle" with the inputs
+      document.getElementById("frmEle").innerHTML = out;
+
+      var y = document.forms;
+      out = "";
+      for (i = 0; i < y.length; i++) {
+        //.action is the property action of the element
+        out += y[i].action + "\n";
+      }
+      alert(out);
+    }
+  </script>
+</body>
+
+</html>

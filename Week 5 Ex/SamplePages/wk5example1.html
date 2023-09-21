@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>wk5example1</title>
+</head>
+<body>
+  <h1>My header</h1>
+  <p id="time"></p>
+  <!-- What do you think would happen if I uncomment the following? -->
+  <!--p id="time"></p--> 
+    
+  <button onclick= "document.getElementById('time').innerHTML=Date()">What time is it? </button>
+
+  <hr>
+  <!------------------------------------>
+  
+  <p class="hello">To be updated</p>
+  <p class="hello">To be updated</p>
+  <button onclick= "sayHello()">Say Hello </button>
+
+  <script>
+      function sayHello() {
+        // x is an array here
+        var x = document.getElementsByClassName("hello");
+        for (ele of x) {
+          ele.innerHTML = '<p style="background-color:tomato;">Hello~~~</p>';
+        }
+      }
+  </script>
+
+  <hr>
+  <!------------------------------------>
+  <button id="my_button">Click me</button>
+  <script> 
+    b = document.getElementById('my_button');
+	b.addEventListener('click', (event) => {
+	  b.textContent = `Click count: ${event.detail}`;
+    });
+  </script>
+
+</body>
+</html>

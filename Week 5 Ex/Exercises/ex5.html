@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk5 Ex5</title>
+   
+    <style>
+		/* define 2 CSS IDs */
+		
+        #circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: goldenrod;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+		#rectangle {
+		    /* Add CSS code here */ 
+            width: 150px;
+            height: 150px;
+            background-color: goldenrod;
+            text-align: center;
+            padding-top: 60px;
+		}
+
+    </style>
+</head>
+<body>
+        
+        <div id="circle" onmouseover="mOver(this)" onmouseout="mOut(this)" >
+            Mouse Over Me
+        </div>
+        
+        <script>
+           // add code here
+
+        function mOver(obj){
+            obj.setAttribute("id","rectangle");
+        }
+
+        function mOut(obj){
+            obj.setAttribute("id","circle");
+        }    
+        </script>
+                
+</body>
+</html>

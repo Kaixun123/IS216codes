@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head><title>Wk5 Ex1</title></head>
+<body>
+    
+    <h2>Form Validation</h2>
+
+    <form name="form" autocomplete="on" >
+        ID: <input type="text" name="id" ><br>
+        Age: <input type="number" name="age" ><br>
+        Email: <input type="text" name="email" ><br>
+        Password: <input type="password" name="password" ><br>
+        <input type="button" value="submit" onclick="validateForm()"><br>
+    </form>
+
+    <script>    
+        function validateForm() {
+            var i = document.getElementsByName("id")[0].value; // or you can use getElementsById or getElementsByTagName
+            var a = document.getElementsByName("age")[0].value;
+            var e = document.getElementsByName("email")[0].value;
+            var p = document.getElementsByName("password")[0].value;
+            var isCorrect = true;
+            console.log(i);
+            console.log(a);
+            console.log(e); 
+            console.log(p);
+			
+			// return true if ok, false if there is a validation error
+        
+            errorstring = "";
+
+            if(i.length > 10){
+                isCorrect = false;
+                errorstring += "ID must be less than 10 \n";
+            }
+            if(a < 10 || a > 40){
+                isCorrect = false;
+                errorstring += "Age must be between 10 to 40 \n";
+            }
+            if(e.indexOf("@") == -1){
+                isCorrect = false;
+                errorstring += "Email must contain '@' \n";
+            }
+            if(p == ""){
+                isCorrect = false;
+                errorstring += "password must not be empty \n";
+            }
+
+            if(isCorrect){
+                alert("All fields are correct");
+            }else{
+                alert(errorstring);
+            }
+
+        }
+    </script>
+</body>
+</html>
