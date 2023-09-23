@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk6 Ex4</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app" class="table m-2"> 
+        <h3>Add a New Blog Post</h3>
+    
+        Subject: <input type='text' size='30' id='subject' required>
+        <br>
+    
+        Entry: <br>
+        <textarea name='entry' cols='80' rows='5' id='entry' required></textarea>
+        <br>
+    
+        Mood:
+            <select id='mood' name='mood'>
+                <option value='Happy'>Happy</option>
+                <option value='Sad'>Sad</option>
+                <option value='Angry'>Angry</option>
+            </select>
+        <br>
+    
+        <br>
+        <button onclick="add()">Submit New Post</button>
+        <p id='status'></p>
+       
+        <hr>
+        Click <a href='http://localhost/wk6/blog/display.php'>here</a> to return to Main Page
+    </div>
+
+    <script>
+        function add() {
+            
+            // TODO: Add Code Here
+			// use async request to submit the post
+
+        }
+           
+    </script>
+
+</body>
+</html>

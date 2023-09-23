@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wk6 Example 3 - Axios : POST with Params</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <p id="axios">Let Axios change this text</p>
+        <button type="button" onclick="addPost()">Click Me!</button>
+    </div>
+
+    <script>
+        function addPost() {
+            //const url = 'http://jsonplaceholder.typicode.com/todos'
+            //const data = { userId: '1'}
+            const url = 'http://localhost/is216/REST/blog/addPost.php'
+            const data = { subject: 'Weather', entry: 'Cloudy but nice', mood: 'Happy'}
+            axios.post(url, data)
+            .then(response =>  {
+                console.log(response.data)
+                console.log(response.data.subject)
+                const status = response.data.status
+                document.getElementById("axios").innerText = status;
+            })
+            .catch(error => {
+                console.log(error.message)
+                document.getElementById("axios").innerText = error.message;
+            });   
+        }
+    </script>
+</body>
+
+</html>

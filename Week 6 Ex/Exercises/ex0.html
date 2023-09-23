@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk6 Ex1</title>
+</head>
+
+<body>
+    <div>
+        <p>Type a name in the input field below:</p>
+    </div>
+
+    <script>
+       weathers = {
+        "coord":{"lon":103.8679,"lat":1.3554},
+        "weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04d"}],
+        "base":"stations",
+        "main":{"temp":300.54,"feels_like":304.13,"temp_min":299.25,"temp_max":302.19,"pressure":1012,"humidity":83},
+        "visibility":10000,
+        "wind":{"speed":3.09,"deg":250},
+        "clouds":{"all":75},
+        "dt":1695345266,
+        "sys":{"type":1,"id":9470,"country":"SG","sunrise":1695336851,"sunset":1695380455},
+        "timezone":28800,
+        "id":1880242,
+        "name":"Somapah Serangoon",
+        "cod":200
+    }
+
+    console.log(weathers.weather[0].description);
+    console.log(weathers.main.temp);
+    console.log(weathers.sys.country);
+
+    </script>
+</body>
+</html>

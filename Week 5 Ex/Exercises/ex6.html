@@ -20,9 +20,28 @@
     <script>
         
         // add code here
-        var select = document.getElementById("select_item");
-        var shopList = document.getElementById("shopList");
-        select.addEventListener();
+        var select_item = document.getElementById("select_item");
+        select_item.addEventListener("change", function(){
+            addItem(this);
+        })
+
+        function addItem (select_item) {
+        
+            var shopList = document.getElementById("shopList");
+            var create_list = document.createElement("li");
+            var deleteButton = document.createElement("button");
+            deleteButton.textContent = "delete";
+
+            deleteButton.onclick = function (){
+                shopList.removeChild(create_list);
+                shopList.removeChild(deleteButton)
+            }
+
+
+            create_list.textContent = select_item.value;
+            shopList.appendChild(deleteButton);
+            shopList.appendChild(create_list);
+        }
     </script>
 
     

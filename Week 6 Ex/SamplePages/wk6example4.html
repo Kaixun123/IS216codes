@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wk6 Example4</title>
+</head>
+
+<body>
+    <h1>JSON.stringify and JSON.parse</h1>
+    <h3>JSON.stringify is used to convert JS object to JSON data </h3>
+    <h3>JSON.parse is used to convert JSON data to JS object </h3>
+    <div id="div1"></div>
+    <script>
+        console.log(JSON.stringify(26));
+        console.log(JSON.stringify("myJSON"));
+        console.log(JSON.stringify([1,2,3,4]));
+
+        //the following returns "undefined"
+        var z;
+        console.log(JSON.stringify(z));	
+	
+	    // objects
+        var user = {
+            name: "Mary",
+            age: 26,
+            hobby: ["swimming", "badminton"],
+            isMarried: false,
+            addHobby: function (new_hobby) {
+                this.hobby.push(new_hobby);
+            },
+			countHobby: function(){
+				return this.hobby.length;
+			}
+        };
+    
+        //the following applies stringify to generate JSON
+        var userJSON = JSON.stringify(user);
+		console.log(typeof(userJSON)); // type is string
+		console.log(typeof(user));     // type is object
+		
+        //note that functions are removed from the object.
+        console.log(userJSON);
+		console.log(user); // see the diff
+
+		// no such function
+        console.log(JSON.stringify(user.countHobby()));
+		
+
+        //the following applies JSON.parse to parse JSON
+        var received = JSON.parse(userJSON); 
+        console.log("The following is the result of parsing the JSON.");
+        console.log("type " + typeof(received));
+        console.log(received);
+
+        /* //the following stores the JSON in the local storage.        
+        localStorage.setItem("employee", userJSON);
+        // Retrieving data: 
+        var text = localStorage.getItem("employee");
+        var emp = JSON.parse(text);  
+        document.getElementById("div1").innerText = emp.name; */
+    </script>
+</body>
+
+</html>
