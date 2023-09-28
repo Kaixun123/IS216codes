@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- directly using vue.js -->
+    <!-- for production version, use vue.min.js -->
+    <!-- we shall use development version, includes helpful console warnings -->
+    <!-- <script src="vue.js"></script> --> 
+
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!-- Listening to Events -->    
+    <div id="app">
+        <!-- name is the Vue variable -->
+        <input v-model="name" v-on:keyup.enter="hello(name)">
+        
+    </div>
+          
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    name: ''
+                }
+            },
+            methods: {
+                hello(name) {
+                    alert("Hello " + name)
+                    // yes of course. Alternatively
+                    // we can simply access name as follows:
+                    // alert("Hello " + this.name)
+                }
+            }
+        }).mount('#app')
+    </script>
+
+</body>
+</html>

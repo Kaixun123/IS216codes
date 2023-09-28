@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Syntax</title>
+    <!-- Option 1: directly using vue.js -->
+    <!-- for production version, use vue.min.js -->
+    <!-- we shall use development version, includes helpful console warnings -->
+    <!-- <script src="vue.js"></script>  -->
+
+    <!-- Option 2: using CDN Library -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <!-- reactive DOM -->
+  <div id="app">
+    <h1> Name : {{name}} </h1> 
+    <h1> Phone : {{getPhone()}}  </h1>   
+
+    <!-- {{ 'Mr ' + name }} <br>
+    One plus two = {{ 1 + 2 }} <br>
+    Uppercase: {{ name.toUpperCase() }} <br> -->
+
+  </div>
+
+  <script>
+    // Vue instance containing data and methods
+    const app = Vue.createApp( {
+        data() {
+          return {
+   					name: 'John',
+   					phone: '123456'
+          }
+				},
+				methods: { 
+   				  getPhone() { 
+              // method doesn't necessarily 'return'
+					    return "This is my number " + this.phone; 
+            }
+				}
+    } )
+
+    // Link (mount) Vue instance to DOM element with id 'app'
+    const vm = app.mount('#app')
+
+    // Alternatively:
+    /* 
+    const vm = Vue.createApp( {
+      data() {
+          return {
+   					name: 'John',
+   					phone: '123456'
+          }
+				},
+				methods: { 
+   				  getPhone() { 
+              // method doesn't necessarily 'return'
+					    return "This is my number " + this.phone; 
+            }
+				}
+    } ).mount('#app') */
+
+  </script>
+</body>
+</html>
+
+

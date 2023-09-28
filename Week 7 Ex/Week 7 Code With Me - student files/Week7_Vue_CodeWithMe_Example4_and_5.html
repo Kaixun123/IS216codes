@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Directives</title>
+    <!-- directly using vue.js -->
+    <!-- for production version, use vue.min.js -->
+    <!-- we shall use development version, includes helpful console warnings -->
+    <!-- <script src="vue.js"></script> --> 
+	
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <!-- Steps 1 to 3 -->
+  <h1>The following demonstrates v-if.</h1>
+  <div id="app">
+    <!--1) add v-if="toDisplay() and v-else "-->
+    <p>Today is Friday! WAD2 rocks!</p>
+	<p>When is WAD2 lesson??</p>
+
+	<!--2) add v-if="toDisplay() and v-else "-->
+    <!-- https://www.w3schools.com/charsets/tryit.asp?deci=128546 -->
+    <p>Today is a good day &#128512;</p>
+    <p>Not a good day &#128546;</p>
+	<!--3) Toggle variable -->
+	<button>Toggle!</button>
+  </div>
+ 
+
+  <script>
+    const app = Vue.createApp( {
+        data() {
+          return {
+		    // 2.5) Add seen variable and initialize to true
+          }
+		},
+		methods: { 
+		  // 1.5) Add toDisplay() and returns true if it is Friday. Use Date()
+          toDisplay() {
+            }
+          },
+		  // 3.5) Add toggle() to toggle seen between false and true
+		  toggle() {
+		  },
+		}
+    } )
+    const vm = app.mount('#app')
+  </script>
+
+  <!-- Steps 4 and 5 -->
+  <h1>The following demonstrates v-bind.</h1>
+  <div id="app2">
+    <!-- 4) Use v-bind to bind an image source to a Vue img variable -->
+    <img />
+    <!-- the following is the shorthand of the above -->
+	<!-- 5) Use shorthand -->
+    <img />
+  </div>
+
+  <script>
+    Vue.createApp( {
+        data() {
+          return {
+		    // 4.5) Add img variable and point to img file in same folder
+          }
+				}
+    }
+    ).mount('#app2')
+  </script>
+
+  <!-- Step 6 -->
+  <h1>The following demonstrates v-html.</h1>
+  <div id="app3">
+    <!-- 6.1) Add {{message}}-->
+    <!-- this doesn't work as intended -->
+	
+	<!-- 6.2) Use v-html -->
+    <!-- use v-html directive to let Vue know 
+       that the content contains HTML code -->
+    <div v-html="message"></div>
+  </div>
+
+  <script>
+    Vue.createApp( {
+        data() {
+          return {
+		    // 6) Add html message in a new paragraph and
+			// in bold the string "Hi, I am John"
+            message: ''
+          }
+		}
+    }
+    ).mount('#app3')
+  </script>
+
+  <!-- Steps 7 to 9 -->
+  <h1>The following demonstrates v-on.</h1>
+  <div id="app4">
+    <!-- 7.1) Use v-on:click="..." to increment counter -->
+    <button>Add</button>
+	
+	<!-- 8.1) Use @click="..."-->
+    <!-- the following is the shorthand of the above -->
+	<button>Add also</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+	
+	<!-- 9.1) Call reset() on click "-->	
+	<button>Reset counter</button>
+  </div>
+
+  <script>
+    Vue.createApp( {
+        data() {
+          return {
+		    // 7) Add counter and initialize to zero
+          }
+		},
+		methods: {
+			// 8) Write increment() to increase counter by 1
+			increment() {
+			},
+			// 9) Write reset() to reset counter to 0
+			reset() {
+			}
+		}
+    }
+    ).mount('#app4')
+  </script>
+
+  <!-- Steps 10 to 15 -->
+  <h1>The following demonstrates v-for.</h1>
+  <ul id="app5">
+	<!-- 13) li v-for -->
+    <li>
+	  <!-- 14) Print e.g. Parent - 0 - Foo etc. -->
+	  
+	  <!-- 15) Print e.g. Parent - 0 - Hi - Foo etc. -->
+    </li>
+  </ul>
+
+  <script>
+    Vue.createApp( {
+      data() {
+        return {
+		  // 10) Create parentMessage variable to hold string 'Parent'
+
+		  // 11) Create items array to hold 2 objects i.e.
+		  // {message: 'Foo'} and {message: 'Bar'}
+
+		  // 11) Create greeting array to hold 2 objects i.e.
+		  // {message: 'Hi'} and {message: 'Bye'}
+
+        }
+      }
+    }
+    ).mount('#app5')
+  </script>
+
+  <!-- Step 16 -->
+  <h1>The following demonstrates v-model.</h1>
+  <div id="app6">
+    <!-- 16.1) Use v-model in input for bidirectional binding -->
+    <input placeholder="edit me">
+	<!-- 16.2) Print out message -->
+    <p>Message is: _______</p>
+  </div>
+
+  <script>
+    Vue.createApp( {
+      data() {
+        return {
+		  // 16) Initialize blank message string
+        }
+      }
+    } ).mount('#app6')
+  </script>
+
+  <!-- Step 17 -->
+  <h1>The following demonstrates v-if and v-else further.</h1>
+  <div id="app7">
+    <!-- 17) Create 2 divs. Show the message in them alternately half the time.-->
+	<!-- 17.1) Use Math.random() directly (need to refresh entirely page to see effect) -->
+    <div>
+      Now you see me &#128512;
+    </div>
+    <div>
+      Now you don't &#128546;
+    </div>
+  </div>
+  <br/>
+   <div id="app8">
+  	<!-- 17.2) Call Math.random() using a button -->	
+	<div>
+      Now you see me &#128512;
+    </div>
+    <div>
+      Now you don't &#128546;
+    </div>
+  </div>
+  
+  <script>
+    Vue.createApp({}).mount('#app7')
+  </script>
+</body>
+</html>

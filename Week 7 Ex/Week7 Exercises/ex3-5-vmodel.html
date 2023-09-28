@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event</title>
+    <!-- directly using vue.js -->
+    <!-- for production version, use vue.min.js -->
+    <!-- we shall use development version, includes helpful console warnings -->
+    <!-- <script src="vue.js"></script> --> 
+
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app"> 
+		<!-- 1) Create 1 checkbox, 
+		        and create bi-directional binding with a Vue variable "toggle".
+				Initial value of toggle is false. 
+				Create also a conditionally rendered span based on the value of toggle -->
+		
+		<br/>
+		
+		<!-- 2) Create 2 radio buttons of the same group, 
+		        and create bi-directional binding with a Vue variable "picked".
+				Initial values of radio buttons can be "a" and "b" 
+				Extra: Give conditional styles to the text 'a' and 'b'
+				based on the radio button selected -->
+	
+		
+		<br/>
+
+		<!-- 3) Create a multi-select drop-down list, 
+		        and create bi-directional binding with a Vue variable "strawhats".
+				Set an initial value for this Vue variable. -->
+
+
+		<!-- 4) Print out a string if at least one option is selected in the dropdown list. 
+		        Make sure to your grammer is correct in accordance with singular or plural 
+				number of items. -->
+
+    </div>
+
+    <script>
+		// 1.1) Create app
+        Vue.createApp({ 
+       }).mount('#app')
+    </script>
+ 
+</body>
+</html>

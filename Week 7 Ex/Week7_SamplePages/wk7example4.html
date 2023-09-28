@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Directives</title>
+    <!-- directly using vue.js -->
+    <!-- for production version, use vue.min.js -->
+    <!-- we shall use development version, includes helpful console warnings -->
+    <!-- <script src="vue.js"></script> --> 
+
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <h1>The following demonstrates v-if.</h1>
+  <div id="app">
+    <p v-if="toDisplay()">Today is Monday</p>
+    <!-- https://www.w3schools.com/charsets/tryit.asp?deci=128546 -->
+    <p v-if="seen">Today is a good day &#128512;</p>
+    <p v-else>Not a good day &#128546;</p>
+  </div>
+ 
+
+  <script>
+    const app = Vue.createApp( {
+        data() {
+          return {
+            seen: true
+          }
+				},
+				methods: { 
+          toDisplay() {
+            var d = new Date();
+            if (d.getDay() == 1) {
+              return true;
+            }
+          }
+				}
+    } )
+    const vm = app.mount('#app')
+  </script>
+
+  <h1>The following demonstrates v-bind.</h1>
+  <div id="app2">
+    <img v-bind:src="img"></img>
+    <!-- the following is the shorthand of the above -->
+    <img :src="img"></img>
+  </div>
+
+  <script>
+    Vue.createApp( {
+        data() {
+          return {
+            img: 'img/me.png'
+          }
+				}
+    }
+    ).mount('#app2')
+  </script>
+
+  <h1>The following demonstrates v-html.</h1>
+  <div id="app3">
+    <!-- this doesn't work as intended -->
+    {{ message }}
+    <!-- use v-html directive to let Vue know 
+       that the content contains HTML code -->
+    <div v-html="message"></div>
+  </div>
+
+  <script>
+    Vue.createApp( {
+        data() {
+          return {
+            message: '<p><b>Hi, I am John</b></p>'
+          }
+				}
+    }
+    ).mount('#app3')
+  </script>
+
+  <h1>The following demonstrates v-on.</h1>
+  <div id="app4">
+    <button v-on:click="counter += 1">Add</button>
+    <!-- the following is the shorthand of the above -->
+	<button @click="counter += 1">Add also</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+  </div>
+
+  <script>
+    Vue.createApp( {
+        data() {
+          return {
+            counter: 0
+          }
+				}
+    }
+    ).mount('#app4')
+  </script>
+
+  <h1>The following demonstrates v-for.</h1>
+
+  <ul id="app5">
+    <li v-for="(item, index) in items">
+      {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+  </ul>
+
+  <script>
+    Vue.createApp( {
+      data() {
+        return {
+          parentMessage: 'Parent',
+          items: [
+            { message: 'Foo' },
+            { message: 'Bar' },
+          ]
+        }
+      }
+    }
+    ).mount('#app5')
+  </script>
+
+  <h1>The following demonstrates v-model.</h1>
+  <div id="app6">
+    <input v-model="message" placeholder="edit me">
+    <p>Message is: {{ message }}</p>
+  </div>
+
+  <script>
+    Vue.createApp( {
+      data() {
+        return {
+          message: ""
+        }
+      }
+    } ).mount('#app6')
+  </script>
+
+</body>
+</html>

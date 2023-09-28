@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event</title>
+    <!-- directly using vue.js -->
+    <!-- for production version, use vue.min.js -->
+    <!-- we shall use development version, includes helpful console warnings -->
+    <!-- <script src="vue.js"></script> --> 
+
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!-- Listening to Events -->    
+    <div id="app1">
+        <button v-on:click="counter += 1">Add 1</button>
+        <p>The button above has been clicked {{ counter }} times.</p>
+    </div>
+          
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    counter: 0
+                }
+            }
+        }).mount('#app1')
+    </script>
+
+    <div id="app2">
+        <button v-on:click="hello">Say Hello</button>
+    </div>
+        
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    name: 'Vue'
+                }
+            },
+            methods: {
+                hello() {
+                    alert("Hello " + this.name + "!")
+                    // `event` is the native DOM event 
+                    // readily available to Vue
+                    alert(event.target.tagName + " event!") // -> button event!
+                }
+            }
+        }).mount('#app2')
+    </script>
+    <br>
+    <div id="app3"> 
+        <button @click="say('hi')">Say hi</button> 
+        <button @click="say('what')">Say what</button> 
+    </div>
+
+    <script>
+        Vue.createApp({ 
+            methods: { 
+                say(message) { 
+                    alert(message) 
+                } 
+            } 
+        }).mount('#app3')
+    </script>
+ 
+
+</body>
+</html>

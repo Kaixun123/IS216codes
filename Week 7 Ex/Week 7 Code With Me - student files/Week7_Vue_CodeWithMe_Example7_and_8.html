@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event</title>
+    <!-- directly using vue.js -->
+    <!-- for production version, use vue.min.js -->
+    <!-- we shall use development version, includes helpful console warnings -->
+    <!-- <script src="vue.js"></script> --> 
+
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!-- Listening to Events -->    
+    <div id="app2">
+		<!-- 1) On click, call hello function-->
+        <button>Say Hello</button>
+    </div>
+        
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    name: 'Vue'
+                }
+            },
+            methods: {
+                hello() {
+					// 2) Alert "Hello someone!", where someone is the name stored in data()
+					
+					// 3) Alert "BUTTON event!"
+                    // `event` is the native DOM event 
+                    // readily available to Vue
+                }
+            }
+        }).mount('#app2')
+    </script>
+    <br>
+    <div id="app3"> 
+		<!-- 4) call say method and alert strings passed in when "Enter" is pressed -->
+        Enter: <input /> 
+		<br/>
+		<!-- 6) call sayAgain method, but check if "Enter" is pressed in method -->
+		Handle in function: <input /> 
+    </div>
+
+    <script>
+        Vue.createApp({ 
+            methods: { 
+				// 5) Write say method to alert string passed in
+                say() { 
+                },
+				// 7) Write sayAgain method and check if keyCode 13 is detected, 
+				// if it is, alert string passed in
+				sayAgain() {
+				},
+				// 8) Write alertMsg method and have say and sayAgain call it
+            } 
+        }).mount('#app3')
+    </script>
+ 
+
+</body>
+</html>

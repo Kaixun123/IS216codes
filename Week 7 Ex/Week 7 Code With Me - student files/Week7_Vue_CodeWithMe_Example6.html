@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>class-style</title>
+    <!-- directly using vue.js -->
+    <!-- for production version, use vue.min.js -->
+    <!-- we shall use development version, includes helpful console warnings -->
+    <!-- <script src="vue.js"></script> --> 
+
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <style>
+        .active {
+            font-size: 40px;
+        }
+		.inactive {
+			background-color: #111;
+		}
+        .text-danger {
+            color: crimson;
+        }
+		.text-success {
+			color: skyblue;
+			font-style: italic
+		}
+    </style>
+</head>
+
+<body>
+    <!-- internal styling -->
+    <div id='app1'>
+		<!-- 
+			1) use v-bind to class attribute, and
+			2) set the 2 CSS classes as keys of an object, 
+			3) having for values isActive and isDanger
+		-->
+        <p> {{ message }} </p>
+		
+		<!-- 6) Create 2 buttons to toggle the states of the CSS classes -->
+		<button>Toggle active</button>
+		<button>Toggle danger</button>
+		
+		<hr>
+        <h1>Alternatively</h1>
+		<!-- 
+			4) use :class shorthand, and
+			5) use an array with the 2 CSS classes as values defined in Vue data 
+		-->		
+        <p> {{ message }} </p>
+		<!-- 7) Create 2 buttons to toggle the states of the CSS classes -->
+		<button>Switch active</button>
+		<button>Switch warning and success</button>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() { 
+                return {
+                    message: "Active Text Danger!",
+                    isActive: true,
+					isDanger: true,
+                    cssProp: 'text-danger',
+                    anotherCssProp: 'active'
+                }
+            },
+			methods: {
+				//7) Implement the toggle methods
+				toggleActive() {
+				},
+				toggleDanger() {
+				},
+				//8 Implement the change styles methods
+				switchActiveClass() {
+				},
+				switchWarningAndSuccess() {
+				}
+			}
+        })
+        
+        const vm = app.mount('#app1')
+    </script>
+
+    <!-- inline styling -->
+    <div id='app2'>
+		<!-- 9) Use v-bind to bind color to a Vue data "activeColor", 
+		        and fontSize to a Vue data "size"
+		-->
+        <p> {{ message }} </p>
+    </div>
+    
+    <script>
+        const app2 = Vue.createApp({
+            data() {
+                return {
+                    message: 'This is inline styling',
+                    activeColor: 'blue', 
+                    size: '50px'
+                }
+            }
+        })
+        
+        const vm2 = app2.mount('#app2')
+    </script>
+    
+  
+    
+</body>
+</html>
