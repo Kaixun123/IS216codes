@@ -10,13 +10,25 @@
 <body>
   <div id="app">
     {{ message }} </br>
-    {{ fruit1 }} <input type="radio" name="fruit">
-    {{ fruit2 }} <input type="radio" name="fruit">
-    {{ fruit3 }} <input type="radio" name="fruit">
+    <span v-for="fruits in fruit">
+      {{ fruits }} <input type="radio" name="fruit">
+
+    </span>
+    
 </div>
 
 <script>
   // Add Code Here
+  const app = Vue.createApp({
+    data(){
+      return{
+        fruit: ["Apple", "Orange", "Peach", "Banana" ],
+        message: "choose your favourite fruit",
+      }
+     
+    },
+  })
+  const vm = app.mount("#app");
 </script>
 
 <!-- challenge: use array  -->

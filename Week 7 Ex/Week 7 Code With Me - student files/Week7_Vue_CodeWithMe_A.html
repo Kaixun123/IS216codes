@@ -1,13 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
     <div id="app">
+        <p>Please type in your name below, and press Enter once you're done</p>
+        <input type="text" id="userInput" v-model.lazy="message"/>
+        <p>Welcome to SMU, {{message}}</p>
+        <p>{{welcomeMsg()}} {{message}} =)</p>
+        <p>{{welcomeMsg2()}}</p>
     </div>
           
     <script>
+        // var msg = document.getElementById("msg");
+        // msg.innerText ="Hello World";
+
+        // var changeText = () => {
+        //     //console.log(event)
+        //     if(event.keyCode == 13){
+        //        msg.innerText = event.target.value; 
+        //     } 
+        // }
+        
+        const app = Vue.createApp({
+            data(){
+                return{
+                    message: ""
+                };
+            },
+            methods:{
+                getAlert(){
+                    alert("Welcome to SMU!");
+                },
+                welcomeMsg(){
+                    return "It's nice to meet you";
+                },
+                welcomeMsg2(){
+                    return `
+                        You are doing great today,
+                        ${this.message}!
+                    `
+                }
+            }
+        })
+        const vm = app.mount("#app");
+        vm.getAlert();
     </script>
 
 </body>

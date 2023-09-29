@@ -16,15 +16,15 @@
   <h1>The following demonstrates v-if.</h1>
   <div id="app">
     <!--1) add v-if="toDisplay() and v-else "-->
-    <p>Today is Friday! WAD2 rocks!</p>
-	<p>When is WAD2 lesson??</p>
+    <p v-if="toDisplay()">Today is Friday ma dudess, AAAAAAAAAAAAAAAA</p>
+	  <p v-else>When is WAD2 lesson??</p>
 
-	<!--2) add v-if="toDisplay() and v-else "-->
+	  <!--2) add v-if="toDisplay() and v-else "-->
     <!-- https://www.w3schools.com/charsets/tryit.asp?deci=128546 -->
-    <p>Today is a good day &#128512;</p>
-    <p>Not a good day &#128546;</p>
-	<!--3) Toggle variable -->
-	<button>Toggle!</button>
+    <p v-if="seen">Today is a good day &#128512;</p>
+    <p v-else>Not a good day &#128546;</p>
+    <!--3) Toggle variable -->
+    <button v-on:click="toggle()">Toggle!</button>
   </div>
  
 
@@ -33,18 +33,22 @@
         data() {
           return {
 		    // 2.5) Add seen variable and initialize to true
+            seen: true,
           }
 		},
 		methods: { 
 		  // 1.5) Add toDisplay() and returns true if it is Friday. Use Date()
           toDisplay() {
-            }
-          },
+            const d = new Date();
+            d.getDay();
+            if(d.getDay() == 5) return true
+            },
 		  // 3.5) Add toggle() to toggle seen between false and true
-		  toggle() {
-		  },
-		}
-    } )
+          toggle() {
+            this.seen = !this.seen
+          },
+      },
+    })
     const vm = app.mount('#app')
   </script>
 
@@ -52,10 +56,10 @@
   <h1>The following demonstrates v-bind.</h1>
   <div id="app2">
     <!-- 4) Use v-bind to bind an image source to a Vue img variable -->
-    <img />
+    <img v-bind:src="img"/>
     <!-- the following is the shorthand of the above -->
-	<!-- 5) Use shorthand -->
-    <img />
+	  <!-- 5) Use shorthand -->
+    <a :href="url"><img :src="img"/></a>
   </div>
 
   <script>
@@ -63,6 +67,8 @@
         data() {
           return {
 		    // 4.5) Add img variable and point to img file in same folder
+            img:"me.png",
+            url:"http://youtube.com",
           }
 				}
     }
@@ -74,7 +80,7 @@
   <div id="app3">
     <!-- 6.1) Add {{message}}-->
     <!-- this doesn't work as intended -->
-	
+    {{message}}
 	<!-- 6.2) Use v-html -->
     <!-- use v-html directive to let Vue know 
        that the content contains HTML code -->
@@ -87,7 +93,7 @@
           return {
 		    // 6) Add html message in a new paragraph and
 			// in bold the string "Hi, I am John"
-            message: ''
+            message: '<p><b>Sanji</b></p>'
           }
 		}
     }
@@ -98,15 +104,15 @@
   <h1>The following demonstrates v-on.</h1>
   <div id="app4">
     <!-- 7.1) Use v-on:click="..." to increment counter -->
-    <button>Add</button>
+    <button v-on:click="increment()">Add</button>
 	
 	<!-- 8.1) Use @click="..."-->
     <!-- the following is the shorthand of the above -->
-	<button>Add also</button>
+	  <button @click="increment()">Add also</button>
     <p>The button above has been clicked {{ counter }} times.</p>
 	
 	<!-- 9.1) Call reset() on click "-->	
-	<button>Reset counter</button>
+	<button v-on:click="reset()">Reset counter</button>
   </div>
 
   <script>
@@ -114,14 +120,17 @@
         data() {
           return {
 		    // 7) Add counter and initialize to zero
+            counter: 0,
           }
 		},
 		methods: {
 			// 8) Write increment() to increase counter by 1
 			increment() {
+        this.counter += 1
 			},
 			// 9) Write reset() to reset counter to 0
 			reset() {
+        this.counter = 0
 			}
 		}
     }
@@ -132,9 +141,9 @@
   <h1>The following demonstrates v-for.</h1>
   <ul id="app5">
 	<!-- 13) li v-for -->
-    <li>
+    <li v-for="(item, index) in items">
 	  <!-- 14) Print e.g. Parent - 0 - Foo etc. -->
-	  
+      {{parentMessage}} - {{index}} - {{greeting[index].message}} - {{item.message}}
 	  <!-- 15) Print e.g. Parent - 0 - Hi - Foo etc. -->
     </li>
   </ul>
@@ -144,13 +153,22 @@
       data() {
         return {
 		  // 10) Create parentMessage variable to hold string 'Parent'
-
+          parentMessage: "Parent",
 		  // 11) Create items array to hold 2 objects i.e.
 		  // {message: 'Foo'} and {message: 'Bar'}
 
 		  // 11) Create greeting array to hold 2 objects i.e.
 		  // {message: 'Hi'} and {message: 'Bye'}
 
+          items: [
+            {message: 'Foo'},
+            {message: 'Bar'}
+          ],
+
+          greeting: [
+            {message: 'Hi'},
+            {message: 'Bye'}
+          ],
         }
       }
     }
@@ -161,18 +179,19 @@
   <h1>The following demonstrates v-model.</h1>
   <div id="app6">
     <!-- 16.1) Use v-model in input for bidirectional binding -->
-    <input placeholder="edit me">
+    <input v-model="message" placeholder="edit me">
 	<!-- 16.2) Print out message -->
-    <p>Message is: _______</p>
+    <p>Message is: {{message}}</p>
   </div>
 
   <script>
     Vue.createApp( {
       data() {
         return {
-		  // 16) Initialize blank message string
+		      // 16) Initialize blank message string
+          message: "Gojo is dead",
         }
-      }
+      },
     } ).mount('#app6')
   </script>
 
@@ -181,26 +200,41 @@
   <div id="app7">
     <!-- 17) Create 2 divs. Show the message in them alternately half the time.-->
 	<!-- 17.1) Use Math.random() directly (need to refresh entirely page to see effect) -->
-    <div>
+    <div v-if="Math.random() > 0.5">
       Now you see me &#128512;
     </div>
-    <div>
+    <div v-else>
       Now you don't &#128546;
     </div>
   </div>
   <br/>
    <div id="app8">
   	<!-- 17.2) Call Math.random() using a button -->	
-	<div>
+	  <div v-if="show">
       Now you see me &#128512;
     </div>
-    <div>
+    <div v-else>
       Now you don't &#128546;
     </div>
+    <button @click="toggle">Toggle me</button>
   </div>
   
   <script>
-    Vue.createApp({}).mount('#app7')
+    Vue.createApp({}).mount('#app7');
+
+    Vue.createApp( {
+      data() {
+        return {
+		      // 16) Initialize blank message string
+          show: true,
+        }
+      },
+      methods: {
+        toggle(){
+          this.show = Math.random() > 0.5 ? true : false
+        }
+      }
+    } ).mount('#app8')
   </script>
 </body>
 </html>

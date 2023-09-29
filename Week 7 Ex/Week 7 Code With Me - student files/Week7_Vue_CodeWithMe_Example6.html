@@ -35,11 +35,14 @@
 			2) set the 2 CSS classes as keys of an object, 
 			3) having for values isActive and isDanger
 		-->
-        <p> {{ message }} </p>
+        <p :class="{active: isActive, 
+            'text-danger':isDanger}"> 
+                    {{ message }} 
+        </p>
 		
 		<!-- 6) Create 2 buttons to toggle the states of the CSS classes -->
-		<button>Toggle active</button>
-		<button>Toggle danger</button>
+		<button @click="toggleActive">Toggle active</button>
+		<button @click="toggleDanger">Toggle danger</button>
 		
 		<hr>
         <h1>Alternatively</h1>
@@ -47,10 +50,10 @@
 			4) use :class shorthand, and
 			5) use an array with the 2 CSS classes as values defined in Vue data 
 		-->		
-        <p> {{ message }} </p>
+        <p :class="[cssProp, anotherCssProp]"> {{ message }} </p>
 		<!-- 7) Create 2 buttons to toggle the states of the CSS classes -->
-		<button>Switch active</button>
-		<button>Switch warning and success</button>
+		<button @click="switchActiveClass">Switch active</button>
+		<button @click="switchWarningAndSuccess">Switch warning and success</button>
     </div>
 
     <script>
@@ -67,13 +70,17 @@
 			methods: {
 				//7) Implement the toggle methods
 				toggleActive() {
+                    this.isActive = !this.isActive
 				},
 				toggleDanger() {
+                    this.isDanger = !this.isDanger
 				},
 				//8 Implement the change styles methods
 				switchActiveClass() {
+                    this.anotherCssProp = this.anotherCssProp == "active" ? "inactive" : "active"
 				},
 				switchWarningAndSuccess() {
+                    this.cssProp = this.cssProp == 'text-danger' ? 'text-success' : 'text-danger'
 				}
 			}
         })
@@ -86,7 +93,7 @@
 		<!-- 9) Use v-bind to bind color to a Vue data "activeColor", 
 		        and fontSize to a Vue data "size"
 		-->
-        <p> {{ message }} </p>
+        <p :fontSize="size" :class="activeColor"> {{ message }} </p>
     </div>
     
     <script>

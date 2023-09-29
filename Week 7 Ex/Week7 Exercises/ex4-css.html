@@ -28,8 +28,35 @@
 </head>
 
 <body>
-    
-    <!-- Add code here -->
+    <div id="app">
+        <div :id="id" :class="{'blueBox': isBlue, 'redBox': !isBlue}">
+           div ID: {{id}} 
+        </div>
+        <br/>
+        <!-- Add code here -->
+        <button 
+        :class="{
+            'btn':true,
+            'btn-primary':isBlue,
+            'btn-danger':!isBlue,
+        }" 
+        @click="changeColour">Change colour</button>
+    </div>
 
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    id: "demo1",
+                    isBlue: false,
+                };
+            },
+            methods:{
+                changeColour(){
+                    this.isBlue = !this.isBlue
+                }
+            }
+        }).mount("#app");
+    </script>
 </body>
 </html>
