@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .night {
+            background-color: black;
+            color: white;
+        }
+
+        .day {
+            background-color: white;
+            color: black;
+        }
+
+        .twilight {
+            background-color: #DBC2CF;
+            color: black
+        }
+
+        .dawn {
+            background-color: #C0A080;
+            color: white
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Welcome!</h1>
+    </div>
+    <script>        
+        //You can use the following JSON data recevied as a test case for your program
+        var jsonData = '{"coord":{"lon":103.85,"lat":1.29},"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04d"}],"base":"stations","main":{"temp":303.76,"feels_like":307,"temp_min":303.15,"temp_max":304.15,"pressure":1009,"humidity":70},"visibility":10000,"wind":{"speed":4.1,"deg":180},"clouds":{"all":75},"dt":1600402268,"sys":{"type":1,"id":9470,"country":"SG","sunrise":1600383320,"sunset":1600426938},"timezone":28800,"id":1880252,"name":"Singapore","cod":200}';        
+        handleData(jsonData);
+
+        function handleData(jsonData) {
+            var obj = JSON.parse(jsonData); //obj is an object representing the above JSON data 
+            //Your code goes here entirely
+            var sunsetSeconds = obj.sys.sunset;
+            let sunsetMinutes = Math.floor(sunsetSeconds / 60);
+            let sunsetHours = Math.floor(sunsetMinutes / 60);
+
+            sunsetSeconds = sunsetSeconds % 60;
+            sunsetMinutes = sunsetMinutes % 60;
+            sunsetHours = (sunsetHours % 24) + 8;
+            if(sunsetHours >= 24){
+                sunsetHours = sunsetHours - 24;
+            }
+
+            var sunsetTime =  sunsetHours.toString().padStart(2, '0') + ":" + sunsetMinutes.toString().padStart(2, '0') + ":" + sunsetSeconds.toString().padStart(2, '0');
+
+            // console.log(sunsetTime);
+
+            var sunriseSeconds = obj.sys.sunrise;
+
+            let sunriseMinutes = Math.floor(sunriseSeconds / 60);
+            let sunriseHours = Math.floor(sunriseMinutes / 60);
+
+            sunriseSeconds = sunriseSeconds % 60;
+            sunriseMinutes = sunriseMinutes % 60;
+            sunriseHours = (sunriseHours % 24) + 8;
+            if(sunriseHours >= 24){
+                sunriseHours = sunriseHours - 24;
+            }
+
+            var sunriseTime = sunriseHours.toString().padStart(2, '0') + ":" + sunriseMinutes.toString().padStart(2, '0') + ":" + sunriseSeconds.toString().padStart(2, '0');
+
+            // console.log(sunriseTime);
+
+            var timeinMilliSec = new Date().getTime()
+            let currentSeconds = Math.floor(timeinMilliSec / 1000);
+            let currentMinutes = Math.floor(currentSeconds / 60);
+            let currentHours = Math.floor(currentMinutes / 60);
+
+            currentSeconds = currentSeconds % 60;
+            currentMinutes = currentMinutes % 60;
+            currentHours = (currentHours % 24) + 8;
+            if(currentHours >= 24){
+                currentHours = currentHours - 24;
+            }
+
+            var currentTime = currentHours.toString().padStart(2, '0') + ":" + currentMinutes.toString().padStart(2, '0') + ":" + currentSeconds.toString().padStart(2, '0');
+
+            // console.log(sunset);
+            // console.log(sunrise);
+
+            // console.log(currentTime);
+
+            const beforeSunsetTime = adjustTime(sunsetTime, -30)
+            const afterSunsetTime = adjustTime(sunsetTime, +30)
+
+            const beforeSunriseTime = adjustTime(sunriseTime, -30)
+            const afterSunriseTime = adjustTime(sunriseTime, +30)
+
+            // console.log(beforeSunriseTime);
+            // console.log(afterSunriseTime);
+
+            // console.log(beforeSunsetTime);
+            // console.log(afterSunsetTime);
+
+            if(currentTime < beforeSunriseTime || currentTime > afterSunsetTime ){
+                document.body.classList.add("night");
+            }else if(currentTime > beforeSunriseTime && currentTime < afterSunriseTime){
+                document.body.classList.add("dawn");
+            }else if(currentTime > beforeSunsetTime && currentTime < afterSunsetTime){
+                document.body.classList.add("twilight");
+            }else{
+                document.body.classList.add("day");
+            }
+        }
+
+        function adjustTime(timeString, minutesToAddOrSubtract) {
+            // Split the time string into hours, minutes, and seconds
+            const [hoursStr, minutesStr, secondsStr] = timeString.split(':');
+            
+            let hours = parseInt(hoursStr);
+            let minutes = parseInt(minutesStr);
+            const seconds = parseInt(secondsStr);
+
+            minutes += minutesToAddOrSubtract;
+
+            // Handle overflow or underflow of minutes and adjust hours accordingly
+            if (minutes < 0) {
+                hours -= Math.ceil(Math.abs(minutes) / 60);
+                minutes = (60 + minutes % 60) % 60;
+            } else if (minutes >= 60) {
+                hours += Math.floor(minutes / 60);
+                minutes %= 60;
+            }
+
+            // Ensure hours, minutes, and seconds are two digits and format them
+            const adjustedHours = String(hours).padStart(2, '0');
+            const adjustedMinutes = String(minutes).padStart(2, '0');
+            const adjustedSeconds = String(seconds).padStart(2, '0');
+
+            // Create the adjusted time string
+            const adjustedTime = `${adjustedHours}:${adjustedMinutes}:${adjustedSeconds}`;
+
+            return adjustedTime;
+        }
+
+
+    </script>
+</body>
+
+</html>

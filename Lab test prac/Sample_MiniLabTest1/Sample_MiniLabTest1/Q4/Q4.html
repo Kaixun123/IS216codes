@@ -1,0 +1,113 @@
+<html>
+<head></head>
+<body>
+    <div id="orderInfo">
+        <h1>You haven't ordered anything.</h1>
+    </div>
+    <hr>
+    <h1>Ala Carte Menu</h1>
+    <h2>Starter</h2>
+    <div>
+        <input type="checkbox" value="Foie Gras" onchange="updt(this.value)">
+        Foie Gras: <span id="Foie Gras Price">12<span>
+    </div>
+    <div>
+        <input type="checkbox" value="Salad" onchange="updt(this.value)">
+        Salad: <span id="Salad Price">6</span>
+    </div>
+    <div>
+        <input type="checkbox" value="Kimbap" onchange="updt(this.value)">
+        Kimbap: <span id="Kimbap Price">10</span>
+    </div>
+    <h2>Main</h2>
+    <div>
+        <input type="checkbox" value="Batter Fish" onchange="updt(this.value)">
+        Batter Fish: <span id="Batter Fish Price">15.99</span>
+    </div>
+    <div>
+        <input type="checkbox" value="Lasagne" onchange="updt(this.value)">
+        Lasagne: <span id="Lasagne Price">16.99</span>
+    </div>
+    <div>
+        <input type="checkbox" value="Pasta" onchange="updt(this.value)">
+        Pasta: <span id="Pasta Price">14.99</span>
+    </div>
+    <h2>Dessert</h2>
+    <div>
+        <input type="checkbox" value="Cheese Platter" onchange="updt(this.value)">
+        Cheese Platter: <span id="Cheese Platter Price">10</span>
+    </div>
+    <div>
+        <input type="checkbox" value="Vinilla Icecream" onchange="updt(this.value)">
+        Vinilla Icecream: <span id="Vinilla Icecream Price">6</span>
+    </div>
+    <div>
+        <input type="checkbox" value="Chocolate Cake" onchange="updt(this.value)">
+        Chocolate Cake: <span id="Chocolate Cake Price">8</span>
+    </div>
+    <hr>
+    <h1>Set Menu</h1>
+    <div>
+        <h2> <input type="checkbox" value="Set 0" onchange="updt(this.value)"> Set 0 </h2>
+        <ul>
+            <li>Starter: Foie Gras</li>
+            <li>Main: Pasta</li>
+            <li>Dessert: Cheese Platter</li>
+            <li>Price: <span id="Set 0 Price">20.5</span></li>
+        </ul>
+    </div>
+    <div>
+        <h2> <input type="checkbox" value="Set 1" onchange="updt(this.value)"> Set 1 </h2>
+        <ul>
+            <li>Starter: Salad</li>
+            <li>Main: Lasagne</li>
+            <li>Dessert: Apple Pie</li>
+            <li>Price: <span id="Set 1 Price">25.99</span></li>
+        </ul>
+    </div>
+    <div>
+        <h2> <input type="checkbox" value="Set 2" onchange="updt(this.value)"> Set 2 </h2>
+        <ul>
+            <li>Starter: Kimbap</li>
+            <li>Main: Batter Fish</li>
+            <li>Dessert: Chocolate Cake</li>
+            <li>Price: <span id="Set 2 Price">29.99</span></li>
+        </ul>
+    </div>
+    <script>
+        var total = 0;
+        var selectedItems = {};
+
+        //Your code should be entirely here. Do not change anything else. 
+        function updt(value){
+
+            var price = parseFloat(document.getElementById( value + " Price").innerText);
+
+            // Check if the item is already selected
+            if (selectedItems[value]) {
+                // If it's selected, unselect it (remove from the object)
+                delete selectedItems[value];
+                total -= price;
+            } else {
+                // If it's not selected, select it (add to the object)
+                selectedItems[value] = price;
+                total += price;
+            }
+           
+            console.log(selectedItems)
+            console.log(total);
+
+            var selectedItemsHTML = "<ul>";
+            for (var key in selectedItems) {
+                selectedItemsHTML += "<li>" + key + ": " + selectedItems[key] + "</li>";
+            }
+            selectedItemsHTML += "</ul>";
+
+            document.getElementById("orderInfo").innerHTML 
+            = "<h1>Your Order</h1><br/>"+ selectedItemsHTML +" <br/><h1>Your order has a total of: " + total + "</h1>";
+        }
+
+    </script>
+</body>
+
+</html>
