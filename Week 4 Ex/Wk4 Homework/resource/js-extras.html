@@ -191,19 +191,34 @@
 
                 console.log(substring);
 
-                const st = "F";
-                const en = "b";
+                st = 'F';
+                en = 'b';
 
-                for(i=0; i<substring.length; i++){
-                    if(substring[i] = st){
-                        
-                    }else{
-                        alert("No such substring");
-                        break;
-                    }
+                let indexSt = txt.indexOf(st);
+                let indexEn = txt.indexOf(en);
+                
+                // console.log(indexEn + 1);
+                // console.log(substring.includes(st))
+                // console.log(substring.includes(en))
+
+                if(txt.includes(st) && txt.includes(en)) {
+                    var stIdx = txt.indexOf(st);
+                    // start the search at stIdx position onwards
+                    // return -1 if en is not found
+                    var enIdx = txt.indexOf(en);
+                    if(enIdx != -1) {
+                        //re-increment operation, which means it will increment the value of enIdx by 1 before using it as the ending index. 
+                        //This index is exclusive, meaning that the character at this index will not be included in the result.
+                        result = "Substring [" + txt.slice(stIdx, ++enIdx) + "] is found";
+                    } else {
+                        result = "No such substring";
+                    }       
+                    
+                } else {
+                    result = "No such substring";
                 }
 
-
+                alert(result);
             }
 
              /* 7. Write a function that asks the user to enter two strings, 
@@ -228,6 +243,45 @@
             function showExtra7() {
                 
                // Add Code Here
+                var str1 = prompt("Please enter a word: ");
+                var str2 = prompt("Please enter another word: ");
+                // var str1 = "Holiday";
+                // var str2 = "daily";
+                var result = false;
+
+                substring1 = str1.split("");
+                substring2 = str2.split("");
+                var largerSubstring;
+                var smallerSubstring;
+
+                if(substring1.length > substring2.length){
+                    largerSubstring = substring1;
+                    smallerSubstring = substring2;
+                }else{
+                    largerSubstring = substring2;
+                    smallerSubstring = substring1;
+                }
+                
+                console.log(largerSubstring);
+                console.log(smallerSubstring);
+
+                console.log(largerSubstring.includes(smallerSubstring.toString()))
+
+                for(i=0; i<largerSubstring.length; i++){
+                    if(largerSubstring.includes(smallerSubstring[i]) == true){
+                        result = true;
+                    }else{
+                        result = false;
+                    }
+                }
+
+                if(result = true){
+                    alert("Bingo!");
+                }else{
+                    alert("Nope :(");
+                }
+                
+
                
             }
 
@@ -246,7 +300,17 @@
             function showExtra8() {
                 
                // Add Code Here
-               
+               var min = prompt("Please enter your min value ");
+               var max = prompt("Please enter your max value ");
+               perfectSq = [];
+
+               for(i=min; i<max; i++){
+                if(Math.ceil(Math.sqrt(i)) == Math.floor(Math.sqrt(i))){
+                    perfectSq.push(i)
+                }
+               }
+
+               alert("the perfect squares are: " + perfectSq);
             }
 
             /* 9. Write a function that gets a set of integer inputs from the user. 
@@ -268,6 +332,41 @@
             function showExtra9() {
                 
                // Add Code Here
+               var txt = prompt("Please enter a set of numbers: ")
+               var groupNumtxt = txt.split(" ");
+               var groupNum = [];
+               
+               for(i=0; i<groupNumtxt.length; i++){
+                groupNum.push(parseInt(groupNumtxt[i]));
+                if(groupNum.push(parseInt(groupNumtxt[i])) == NaN){
+                    return alert("You have entered a non-integer");
+                }
+               }
+
+               if(groupNum.includes(NaN)){
+                return alert("You have entered a non-integer");
+               }else{
+                 groupNum.sort(function(a, b){return a - b});
+               
+                //get the max number in the array
+                max = groupNum[groupNum.length-1];
+
+                //get the min number in the array
+                min = groupNum[0];
+
+                const mid = Math.floor(groupNum.length / 2);
+                
+                if (groupNum.length % 2 === 0) {
+                        median = (groupNum[mid - 1] + groupNum[mid]) / 2;
+                    } else {
+                        median = groupNum[mid];
+                    }
+
+                 return alert("Max: " + max + ", Min: " + min + ", Median: " + median);
+                }
+
+              
+
                
             }
 
@@ -287,7 +386,9 @@
                 var persons2 = [{name:"Mary",age:23}, {name:"Jennifer",age:32}];
                 
                // Add Code Here
-               
+               var persons = persons1.concat(persons2).sort(function(a, b){return a.age - b.age});
+
+               console.log(persons);
                
             }
 
@@ -302,6 +403,20 @@
                 
                // Add Code Here
                var items = [{name:"pencil",price:1.25}, {name:"book",price:5}, {name:"pen",price:2.50}]
+               var itemPrice = []
+               var total = 0;
+
+               for(i=0; i<items.length; i++){
+                itemPrice.push(items[i].price)
+               }
+
+               for(i=0;i<itemPrice.length;i++){
+                total += itemPrice[i];
+               }
+               
+               alert("The total will be " + total);
+
+               console.log(total);
             }
 
         </script>

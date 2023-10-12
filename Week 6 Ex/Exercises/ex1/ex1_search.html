@@ -10,6 +10,7 @@
     </script>
 
     <!-- TO DO: Add Axios Library here -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -25,10 +26,27 @@
     <script>
         // TO DO: associate name element's keyup event with showHint function
 
+        var nameElem = document.getElementById("name");
+        nameElem.addEventListener("keyup", showHint);
         // TO DO: fill up the showHint function to make an async request to ex1_getHint.php?query=xxx
-        // and display the response text at txtHint       
+        // and display the response text at txtHint      
+        
         function showHint(){
+            var textEnteredByUser = document.getElementById("name").value;
+            url = "ex1_getHint.php"
+            //url += "?.query=" + textEnterByUser;
+            para = {
+                query: textEnteredByUser,
+            }
 
+            axios.get(url, {params:para})
+            .then(response => {
+                console.log(response.data)
+                document.getElementById("txtHint").innerHTML = response.data;
+            }).catch(error =>{
+                console.log(error);
+                document.getElementById("txtHint").innerHTML = error.message;
+          });
         }
 
     </script>

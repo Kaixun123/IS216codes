@@ -10,7 +10,7 @@
     </script>
 
     <!-- TO DO: Add Axios Library here -->
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <input id="limit" type="number" min=1 max=5 value=1>
 		
         <!-- TO DO: associate this drop-down list with the getData() function -->
-        <select> 
+        <select id="select-item" onchange="getData()"> 
             <option value="customers">Customers</option>
             <option value="products">Products</option>
             <option value="suppliers">Suppliers</option>
@@ -32,15 +32,26 @@
 
     <script>
         function getData() {
-            var type = "customers"; // TO DO: assign selected value from drop down list
-            var limit = 3;          // TO DO: assign entered value from input element
-            var url = "ex2_getData.php"
+            var type =  document.getElementById('select-item');
+            var type_IndexValue = type.value;                       // TO DO: assign selected value from drop down list
+            var type_value = type.options[type.selectedIndex].value;
+            var limit = document.getElementById('limit');         // TO DO: assign entered value from input element
 
+            var url = "ex2_getData.php";
+            url += "?type=" + type_value + "?limit=" + limit;
             // use axios to create async call to url like this:
             //   getData.php?type=customers&limit=5
             // type can be "customers", "products" or "suppliers"
             // limit can be 1-5
             // if a JSON object is returned, call generateTable() to display the table
+
+            axios.get(url)
+            .then(response =>{
+                console.log(response.data);
+                generateTable(response.data, type_value);
+            }).catch(error => {
+                console.log(error.message);
+            }) 
 
         }
 

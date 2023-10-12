@@ -69,7 +69,7 @@
     * The callback parameter executes the initMap() function
     -->
 	<!-- change here -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=XXX"
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyAaEnE_e4uzuT-FKFOE2NutXTEgY6XsEuE"
         async defer></script>
 
     <div>
@@ -96,7 +96,7 @@
         function getLoc() {
             var addr = encodeURI(document.getElementById("addr").value);
             console.log(addr);
-            var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addr + "&key=XXX";  // <-- change here
+            var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addr + "&key=AIzaSyAaEnE_e4uzuT-FKFOE2NutXTEgY6XsEuE";  // <-- change here
 
             // axio call
             axios.get(url)
@@ -109,13 +109,14 @@
                     // refresh the hidden input values with new lat lng coordinates
                     var coordinate = getLatLng(resp.data);
                     // TO DO
-
+                    document.getElementById("display").innerHTML = fullAddress;
                     // now refresh the map
                     initMap();
                 })
                 .catch(err => {
                     console.log(err.message)
 					// TO DO
+                    document.getElementById("display").innerText = "An error has occured"
                 });
         }
 
@@ -123,7 +124,7 @@
         function getFullAddress(data) {
             var addr = data.results[0].formatted_address;
             var loc = getLatLng(data);
-            return addr + "<br> lat: " + loc["lat"] + ", lng: " + loc["lng"];
+            return addr + "<br/> lat: " + loc["lat"] + ", lng: " + loc["lng"];
         }
 
         // extract the location (lat long) from response.data
