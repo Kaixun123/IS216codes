@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk10 Example 4a - Looping Through an Array</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>           
+    <!-- Can use a list as well
+	<ul id="app"> 
+        <li v-for="n in numbers"> 
+            {{ n }} 
+        </li>          
+    </ul>  
+	-->
+    <div id="app">
+        <span v-for="n in numbers"> {{ n }} &nbsp; </span>
+    </div>     
+    <script>
+        const vm = Vue.createApp({ 
+            data() {
+                return {
+                    numbers: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] 
+                }  
+            }
+        }).mount('#app')
+    </script>
+
+</body>
+</html>
+

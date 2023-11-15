@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Demo0a - a component template cannot access instance ppty directly</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id = "app">
+	
+		<my-component my_prop1="durian"/>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    instanceTemp: "apple"  // instance property
+                } 
+            }
+        })
+
+		// component - can access instance property directly
+        app.component('my-component', {    
+			data(){
+				return {
+					componentTemp: "orange"  // component ppty
+				}
+			},
+            props: ['my_prop1'], 
+            template: `<div>
+						 componentTemp:{{componentTemp}}  <br>  <!-- ok -->
+						 instanceTemp:{{instanceTemp}}	  <br>  <!-- problem -->
+						 my_prop1: {{my_prop1}}           <br>  <!-- ok -->
+                       </div>`
+        })
+
+        const vm = app.mount('#app')
+    </script>
+
+</body>
+</html>

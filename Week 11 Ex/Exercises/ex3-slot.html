@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Ex3</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>   
+</head>
+
+<body>
+    <div id="app">
+        <!-- TODO: edit here only. Only one human-being element can be used 
+			 Hint: use v-for
+		-->
+        <human-being v-for="person in persons">{{ person.fName }} {{ person.lName }}</human-being>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    persons: [
+                        {fName:"Bill", lName:"Gates"},
+                        {fName:"Elon", lName:"Musk"},
+                        {fName:"Larry", lName:"Ellison"},
+                        {fName:"Mark", lName:"Zuckerberg"},
+                        {fName:"Bernard", lName:"Arnault"},
+                        {fName:"Larry", lName:"Page"},
+                        {fName:"Warren", lName:"Buffet"},
+                        {fName:"Sergey", lName:"Brin"},                        
+                    ]
+                }
+            },
+            methods: {       
+            },
+        })
+
+        app.component('human-being', {
+            template: `<div>
+                            <h1> <slot></slot> </h1>
+                       </div>`
+        })
+
+        const vm = app.mount('#app')
+    </script>
+</body>
+</html>

@@ -10,15 +10,28 @@
 	<script>
         //TODO: type the program on the slide here; and output the value of newperson.firstName and newcars[0]
         //use: console.log(x) to display x on the console.
-		var cars = ["Saab", "Volvo", "BMW"];
-		var newcars = cars;
-		cars[0] = "Audi";
-		console.log(newcars[0]);
+		// var cars = ["Saab", "Volvo", "BMW"];
+		// var newcars = cars;
+		// cars[0] = "Audi";
+		// console.log(newcars[0]);
 
-		var person = {firstName: "Yournal", lastName: "Drunk", age: 50};  
-		var newperson = person;
-		person.firstName = "Jun";
-		console.log(newperson.firstName);
+		// var person = {firstName: "Yournal", lastName: "Drunk", age: 50};  
+		// var newperson = person;
+		// person.firstName = "Jun";
+		// console.log(newperson.firstName);
+
+
+		var obj = {
+			name: "mystery",
+			a: 2,
+			b: [3,4],
+			c: function(b) {
+				return this.b[0] + b[0];
+			}
+		};
+		var b = [1,2,3];
+		console.log( obj["a"] + obj.b[1] + obj.c( b) );
+
 
 
 	</script>

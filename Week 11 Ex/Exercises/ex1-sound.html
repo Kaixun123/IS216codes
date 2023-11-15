@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Wk11 Ex1 - Sound</title>
+
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        Sound level
+        <!-- <input type="number" min="0" max="3" v-model="soundLevel">  -->
+        <!-- TODO: Add Code Here to make use of the sound-icon component -->
+        <!-- pass the variable soundlevel to selected_level -->
+        <sound-icon :selected_level="soundLevel"></sound-icon>
+
+        <br/>
+        Sound level
+        <sound-icon :selected_level="soundLevel"></sound-icon>
+
+        <br/>
+        Sound level
+        <sound-icon :selected_level="soundLevel"></sound-icon>
+    </div>
+    
+    <script>
+		// Vue instance
+        const app = Vue.createApp({
+            // TODO: add a data option with ppty here
+            data(){
+                return{
+                    soundLevel: 0,
+                }
+            },
+        });
+
+		// sound-icon component
+        app.component('sound-icon', {
+            data() {
+                return {
+                    soundEmojis: ['🔇', '🔈', '🔉', '🔊'],
+                    soundLevel: 0,
+                } 
+            },
+            // props:['selected_level'],
+            template: `
+            <div>
+                <input type="number" min="0" max="3" v-model="soundLevel">
+                <span>{{ soundEmojis[soundLevel] }}</span>
+            </div>
+`, 
+        // TODO: add your template code here to display one of the soundEmojis
+        })
+
+		// mount Vue instance
+        const vm = app.mount('#app')        
+    </script>
+    
+    
+</body>
+</html>

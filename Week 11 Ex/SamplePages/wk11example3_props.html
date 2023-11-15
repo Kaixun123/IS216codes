@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Example3 - Props</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id = "app">
+        <product 
+            name="iPhone"  
+            price="1000" 
+            imagefile="./img/phone1.jpg"
+            available="true">
+        </product> 
+        <product 
+            name="Samsung" 
+            price="900"  
+            imagefile="./img/phone2.jpg"
+            available="false">
+        </product> 
+
+        <product 
+            name="Oppo"    
+            price="500"  
+            imagefile="./img/phone3.jpg"
+            available="false">
+        </product> 
+    </div>
+
+    <script>
+        const app = Vue.createApp({})
+
+        app.component('product', { 
+            props: ['name', 'price', 'imagefile', 'available'], 
+            template: `<div>
+                         <h1>Product Name: {{ name }}</h1>
+                         <img :src='imagefile' width="100" height="100">
+                         <h2>Price: {{ price }}.</h2>
+                         <p v-if='available == "true"'><span style="color:red">In Stock</span></p>
+                         <p v-else>Out of Stock</p>
+                       </div>`
+        })
+
+        app.mount('#app')
+    </script>
+
+</body>
+</html>

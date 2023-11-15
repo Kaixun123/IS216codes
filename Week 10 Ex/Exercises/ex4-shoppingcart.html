@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk 10 Ex 4 - ShoppingCart</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <h2>Shopping Cart</h2>
+        <!-- TODO: Add Code Here -->
+		
+        <!-- <ul id="app">
+            <li v-for="(item, idx) in items" :key="idx">{{ item }} <button @click="deleteList(idx)">Delete</button></li>
+        </ul>
+
+        <input v-model="newitem" placeholder="Add a new item">
+        <button @click="add(newitem)">Add Item</button>
+         -->
+
+         <ul>
+            <li v-for="(item, idx) in items">{{ item }} <button @click="deleteList(idx)">Delete</button></li>
+         </ul>
+
+         <input v-model="newitem">
+         <button @click="add(newitem)">Add item</button>
+    </div> 
+
+    <script>
+        // TODO: Add necessary code below
+        const vm = Vue.createApp({  
+            data() {
+                return {
+                    newitem:'',
+                    items: ['keyboard', 'mouse', 'iPhone', 'macbook', 'adapter']
+                }
+            },
+            methods: {
+                deleteList(idx){
+                    this.items.splice(idx, 1);
+                },
+                add(newitem){
+                    this.items.push(newitem);
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

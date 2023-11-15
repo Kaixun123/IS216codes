@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk10 Example 6 - Using v-for for Objects</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!------------------------------------------------------------->
+    <br><br>            
+    
+    <ul id="app"> 
+        <li v-for="value in object"> 
+            {{ value }} 
+        </li>          
+    </ul>      
+    <script>
+        Vue.createApp({ 
+            data() {
+                return {
+                    object: { 
+                        title: 'Foo', 
+                        author: 'Bar',
+                        isbn: '12233' 
+                    } 
+                } 
+            } 
+        }).mount('#app')
+    </script>
+
+    <!------------------------------------------------------------->
+    <br><br>
+    <!--   <div id="app2" v-for="(value, name) in object2"> 
+            {{ name }}: {{ value }} 
+    </div> -->
+    <ul id="app2">
+        <li v-for="(value, name) in object2"> 
+            {{ name }} : {{ value }} 
+        </li>
+    </ul>
+    <script>
+        Vue.createApp({ 
+            data() {
+                return {
+                    object2: { 
+                        title: 'Foo', 
+                        author: 'Bar',
+                        isbn: '12235' 
+                    } 
+                } 
+            } 
+        }).mount('#app2')
+    </script>
+
+    <!------------------------------------------------------------->
+    <br><br>
+    <!-- <div id="app3" v-for="(value, name, index) in object3"> 
+            {{ index }}. {{ name }}: {{ value }} 
+    </div> -->
+    <ul id="app3">
+        <!-- Order is important. The 1st parameter should be the value, followed by name and index. -->
+        <li v-for="(value, name, index) in object3"> 
+                {{ index }}. {{ name }}: {{ value }}  
+        </li>
+    </ul>
+    <script>
+        Vue.createApp({ 
+            data() { 
+                return {
+                    object3: { 
+                        title: 'Foo', 
+                        author: 'Bar',
+                        isbn: '12236' 
+                    } 
+                }
+            } 
+        }).mount('#app3')
+    </script>
+
+</body>
+</html>

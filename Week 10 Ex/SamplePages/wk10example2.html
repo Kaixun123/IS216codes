@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wk9 Example 2 - V-Model</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!----------------------------------------------------------------->
+    <!-- INPUT TEXT -->
+    <h1> (1) The following demonstrates binding text inputs. </h1>
+    <div id="app1">
+        <input v-model="message">
+        <p>Message is: {{ message }}</p>
+    </div>
+
+    <script>
+        const app1 = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello'
+                }
+            }
+        })
+        const vm1 = app1.mount('#app1');
+    </script>
+   
+    <br><hr>
+    <!----------------------------------------------------------------->
+    <!-- TEXTAREA -->
+    <h1> (2) The following demonstrates binding multiline text inputs. </h1>    
+    <div id="app2">
+        <span>Multiline message is:</span>
+        <p style="white-space: pre-line;">{{ message }}</p> <br>
+
+        <textarea v-model="message">
+        </textarea>
+    </div>
+
+    <script>
+        const app2 = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello'
+                }
+            }
+        })
+        const vm2 = app2.mount('#app2');
+    </script>
+
+    <br><hr>
+    <!----------------------------------------------------------------->
+    <!-- CHECK BOX #1 -->
+    <!-- Single checkbox, boolean value:  -->
+    <!-- if the checkbox has no 'value', checked will be set to "true"-->
+    <h1> (3) The following demonstrates binding to 1 checkbox. </h1>
+    <div id="app3">
+		<!-- 1 checkbox, bound to 1 ppty -->
+        <input type="checkbox" id="checkbox1" v-model="isChecked">
+        <label for="checkbox1">Checked? {{ isChecked }}</label>
+        <br>
+    </div>
+
+    <script>
+        const app3 = Vue.createApp({
+            data() {
+                return {
+                    isChecked: ''  // for single checkbox
+                }
+            }
+        })
+        const vm3 = app3.mount('#app3');
+    </script>
+
+    <br><hr>
+    <!----------------------------------------------------------------->
+    <!-- CHECK BOX #2 -->
+    <!-- Single checkbox, boolean value:  -->
+    <!-- if the checkbox has no 'value', checked will be set to "true"-->
+    <h1> (4) The following demonstrates binding to multiple checkboxs. </h1>
+    <div id="app4">
+		
+        <!-- Multiple checkboxes, bound to the same Array: -->
+        <input type="checkbox" id="jack1" value="Jack" v-model="checkedNames">
+        <label for="jack1">Jack Johnson</label>
+        <input type="checkbox" id="john1" value="John" v-model="checkedNames">
+        <label for="john1">John Doe</label>
+        <input type="checkbox" id="mike1" value="Mike" v-model="checkedNames">
+        <label for="mike1">Mike Tyson</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+    </div>
+
+    <script>
+        const app4 = Vue.createApp({
+            data() {
+                return {
+                    checkedNames: []  // must be an array to be associated with checkboxes
+                }
+            }
+        })
+        const vm4 = app4.mount('#app4');
+    </script>
+
+    <br><hr>
+    <!----------------------------------------------------------------->
+    <!-- RADIO BUTTONS -->
+    <!-- if the radio button has no 'value', picked will be set to "on"-->
+    <h1> (5) The following demonstrates binding radio button inputs. </h1>
+
+    <div id="app5">
+        <input type="radio" id="none1" value="None" v-model="picked">
+        <label for="none1">None</label>
+        <br>
+        <input type="radio" id="one1" value="One" v-model="picked">
+        <label for="one1">One</label>
+        <br>
+        <input type="radio" id="two1" value="Two" v-model="picked">
+        <label for="two1">Two</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+    </div>
+
+    <script>
+        const app5 = Vue.createApp({
+            data() {
+                return {
+                    picked: ''  // is a string if associated with radio buttons 
+                }
+            }
+        })
+        const vm5 = app5.mount('#app5');
+    </script>
+
+    <br><hr>
+    <!----------------------------------------------------------------->
+    <!-- SELECT -->
+    <h1> (6) The following demonstrates dropdown list inputs. </h1>
+    
+    <div id="app6">
+        <select v-model="selected">
+            <option disabled value="">Please select one</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span> Selected: {{ selected }}</span>
+    </div>
+
+    <script>
+        const app6 = Vue.createApp({
+            data() {
+                return {
+                    selected: '' // can also set an initial value like 'B'
+                }
+            }
+        })
+        const vm6 = app6.mount('#app6');
+    </script>
+    
+    <br><hr>    
+</body>
+
+</html>

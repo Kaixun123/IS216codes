@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Example4 - Product</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- display the 3 products -->
+        <product v-bind:prod="product1"></product>
+        <product v-bind:prod="product2"></product>
+        <product v-bind:prod="product3"></product>
+    </div>
+
+    <script>
+		// vue instance
+        const app = Vue.createApp({
+            data() {
+                return {
+                    //assume the following data is obtained dynamically through async requests
+                    product1: { id: 1, name: 'iPhone' , desc: '<p>This is the best phone in the world!</p>' },
+                    product2: { id: 2, name: 'Samsung', desc: '<p>No, mine is the best!</p>' }, 
+                    product3: { id: 3, name: 'Oppo'   , desc: '<p>Mine is cheaper and yet as good!</p>' } 
+                    /* 
+					// what happens if products is an array instead? 
+                    products: [
+                        { id: 1, name: 'iPhone', desc: '<p>This is the best phone in the world!</p>' }, 
+                        { id: 2, name: 'Samsung', desc: '<p>No, mine is the best!</p>' }, 
+                        { id: 3, name: 'Oppo', desc: '<p>Mine is cheaper and yet as good!</p>' } 
+                    ]*/
+                }
+            }
+        })
+
+		// component
+        app.component('product', {
+            props: ['prod'],
+            template: `<div>
+                            <h3> {{ prod.id }} : {{ prod.name }} </h3>
+                            <div v-html='prod.desc'></div>
+                       </div>`
+        })
+
+		// mount
+        const vm = app.mount('#app')
+    </script>
+</body>
+</html>

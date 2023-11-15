@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk10 Example 7 - Using v-for for Table</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <table id='app' border='1'>
+        <tr v-for="dam in dams"> 
+            <td>{{dam.name}}</td> 
+            <td>{{dam.country}}</td> 
+            <td>{{dam.electricity}} MegaWatts</td>
+        </tr>   
+    </table>
+    
+    <script>
+        const vm = Vue.createApp({
+            data() {
+                return {
+                    dams: [
+                        {name: 'Nurek Dam', country: 'Tajikistan', electricity: 3200},
+                        {name: 'Three Gorges Dam', country: 'China', electricity: 22500},
+                        {name: 'Tarbela Dam', country: 'Pakistan', electricity: 3500},
+                        {name: 'Marina Reservoir', country: 'Singapore', electricity: 0},
+                        {name: 'Guri Dam', country: 'Venezuela', electricity: 10200}
+                    ] 
+                }
+            }
+        }).mount('#app')
+    </script>
+
+</body>
+</html>

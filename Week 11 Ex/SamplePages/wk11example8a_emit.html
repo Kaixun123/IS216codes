@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Example8a - Emit (without data payload)</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id = "app">
+        <div :style="{ 'font-size': fontSize + 'em' }">
+            <product @enlarge="onEnlarge"></product>
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({ 
+            data() {
+                return {
+                    fontSize: 1
+                }
+            },
+            methods: {
+                onEnlarge() {  // event handler
+                    this.fontSize += 0.1
+                }
+            }			
+         })
+
+        app.component('product', {
+            data() {
+                return {
+                    id: 1, 
+					name: 'iPhone', 
+					desc: '<p>This is the best phone in the world!</p>',
+                }
+            },		
+            props: ['prod'],
+            template: `<div>
+                            <h3>{{id}} {{name}}</h3>
+                            <button @click="$emit('enlarge')">
+                                Enlarge text </button>
+                            <div v-html='desc' />
+                        </div>`
+        })
+        
+        const vm = app.mount('#app')
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk 10 Ex 1 - Compute Age</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!-- <div id='app'>
+        <label>Enter your birthyear:
+        <input v-model = "birthyear" placeholder="MM/DD/YYYY"></label>
+        <p> Your age is: {{age}} </p>
+    </div> 
+    <script>
+        //todo: create a Vue instance to finish the task
+        Vue.createApp({
+            data(){
+                return{
+                    birthyear: "",
+                }
+                  
+            },
+            computed:{
+                age(){
+                    // return new Date().getFullYear() - this.birthyear;
+                    return new Date().getFullYear() - new Date(this.birthyear).getFullYear();
+                }
+            }
+        }).mount("#app")
+
+    </script> -->
+
+    
+<div id='app'>  
+    <span v-for="n in count"
+       :style="{ color : colors[n % colors.length] }"
+    >{{n}}</span>
+ </div>
+ 
+ <script>
+ Vue.createApp({
+    data() {
+       return {
+          count: 3,
+          colors: [ "red", "green" ]
+       };
+    }
+ }).mount('#app');
+ </script>
+
+</body>
+</html>

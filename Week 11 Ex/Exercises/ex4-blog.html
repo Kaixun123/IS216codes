@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+        
+    <div id="app">
+        <!-- TODO: make use of the 'blog-post' component to display the blog posts -->
+    </div>
+ 
+     <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    posts: [] // array of post objects
+                }
+            },
+            created() { // created is a hook that executes as soon as Vue instance is created
+                axios.get('http://localhost:XXXX/wk9/blog/getPosts.php')  // <-- edit this
+                .then(response => {
+                    // this gets the data, which is an array
+                    this.posts = response.data
+                })
+                .catch(error => {
+                    this.posts = [{ entry: 'There was an error: ' + error.message }]
+                })
+            }
+            
+        });
+
+        app.component('blog-post', {
+            props: ['id', 'subject', 'entry', 'mood'],
+            //TODO: define a template to display a blog-post in the form of a bootstrap card
+            //Show the id and entry as text            
+            //Show a different image according to the mood
+            template: `    
+            
+            `
+        })
+
+        app.mount('#app')
+    </script> 
+
+    <!-- bootstrap -->    
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+</html>

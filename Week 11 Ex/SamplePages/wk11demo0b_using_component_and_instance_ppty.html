@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Demo0b - a component template accessing instance ppty indirectly using a prop</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id = "app">
+        <!-- you can use v-bind to bind an attribute's value to an instance property -->
+		<my-component my_prop1="durian" :my_prop2="instanceTemp"/>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    instanceTemp: "apple"  // instance property
+                } 
+            }
+        })
+
+		// component - can access instance property directly
+        app.component('my-component', {    
+			data(){
+				return {
+					componentTemp: "orange"  // component ppty
+				}
+			},
+            props: ['my_prop1', 'my_prop2'], 
+            template: `<div>
+						 componentTemp:{{componentTemp}}  <br>  <!-- ok -->
+						 instanceTemp:{{instanceTemp}}	  <br>  <!-- problem -->
+						 my_prop1: {{my_prop1}}           <br>  <!-- ok -->
+						 my_prop2: {{my_prop2}}           <br>  <!-- ok -->
+                       </div>`
+        })
+
+        const vm = app.mount('#app')
+    </script>
+
+</body>
+</html>

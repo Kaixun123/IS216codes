@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Example5a - Product</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- display the 3 products -->
+        <product :prod="products"></product>
+    </div>
+
+    <script>
+		// vue instance
+        const app = Vue.createApp({
+            data() {
+                return {
+                    //assume the following data is obtained dynamically through async requests
+                    products: [
+                        { id: 1, name: 'iPhone', 	desc: '<p>This is the best phone in the world!</p>' }, 
+                        { id: 2, name: 'Samsung', 	desc: '<p>No, mine is the best!</p>' }, 
+                        { id: 3, name: 'Oppo', 		desc: '<p>Mine is cheaper and yet as good!</p>' } 
+                    ]
+                }
+            }
+        })
+
+		// component
+        app.component('product', {
+            props: ['prod'],
+            template: `<div>
+							<div v-for="p in prod">
+								<h3> {{ p.id }} : {{ p.name }} </h3>
+								<div v-html='p.desc'></div>
+							</div>
+                       </div>`
+        })
+
+		// mount
+        const vm = app.mount('#app')
+    </script>
+</body>
+</html>

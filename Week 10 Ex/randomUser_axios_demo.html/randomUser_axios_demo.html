@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <!-- internal CSS -->
+    <style>
+      .bg-blue {
+        background-color: skyblue;
+      }
+      .bg-pink {
+        background-color: pink;
+      }
+    </style>
+
+    <title>Random User Demo (Using Axios)</title>
+  </head>
+  <body style="text-align: center">
+    <div id="app">
+      <!-- click -->
+      <button type="button" onClick="getHuman()">Click Me!</button><br><br>
+      <img id="picture"><br>
+	  <p id="fullName"><br>
+	  
+    </div>
+    <!------------------------->
+    <script>
+        function getHuman() {
+            axios
+              .get(`https://randomuser.me/api`)
+              .then((resp) => {
+                fName = resp.data.results[0].name.first;
+                lName = resp.data.results[0].name.last;
+                sex = resp.data.results[0].gender;
+                
+				if (sex=="female"){
+					salutation = "Ms.";
+					document.getElementById("fullName").classList="bg-pink";
+				}else{
+					salutation = "Mr.";
+					document.getElementById("fullName").classList="bg-blue";
+				}
+				document.getElementById("fullName").innerText= salutation + " " + fName + " " + lName;
+				
+				foto = resp.data.results[0].picture.medium;
+				document.getElementById("picture").src = foto;
+              })
+              .catch((err) => {
+                console.log(err.message);
+              });
+        }
+    </script>
+  </body>
+</html>

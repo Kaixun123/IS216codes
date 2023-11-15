@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Example5 - v-for</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- There will be 1 <product> for each object in the products array -->
+        <product
+            v-for="product in products"
+            v-bind:key="product.id"  
+            v-bind:prod="product"
+        ></product>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    //assume the following data is obtained dynamically through async requests
+                    products: [
+                        { id: 1, name: 'iPhone', desc: '<p>This is the best phone in the world!</p>' }, 
+                        { id: 2, name: 'Samsung', desc: '<p>No, mine is the best!</p>' }, 
+                        { id: 3, name: 'Oppo', desc: '<p>Mine is cheaper and yet as good!</p>' } 
+                    ]
+                }
+            }
+        })
+
+        app.component('product', {
+            props: ['prod'],
+            template: `<div>
+                            <h3> {{ prod.id }} : {{ prod.name }} </h3>
+                            <div v-html='prod.desc'></div>
+                       </div>`
+        })
+
+        app.mount('#app')
+    </script>
+</body>
+</html>

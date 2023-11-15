@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wk10 Example 5 - Using v-for for Lists</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+
+  <body>
+    <!---------------------------------------------------->
+    <h1>The following demonstrates rendering an array with v-for</h1>
+    <ul id="app1">
+      <li v-for="(item, idx) in items">{{ idx }} - {{ item }}</li>
+    </ul>
+
+    <script>
+      const vm1 = Vue.createApp({
+        data() {
+          return {
+            items: ["a", "b", "c"],
+          };
+        },
+      }).mount("#app1");
+    </script>
+    <!---------------------------------------------------->
+    <br><hr>
+    <h1>The following demonstrates rendering an array of objects with v-for
+
+    </h1>
+    <ul id="app2">
+      <li v-for="item in items">{{ item.message }}</li>
+    </ul>
+
+    <script>
+      const vm2 = Vue.createApp({
+        data() {
+          return {
+            items: [{ message: "Foo" }, { message: "Bar" }],
+          };
+        },
+      }).mount("#app2");
+    </script>
+    <!---------------------------------------------------->
+    <br><hr>
+    <h1>The following demonstrates rendering an array with v-for and the optional index argument</h1>
+
+    <ul id="app3">
+      <li v-for="(item, index) in items">
+        <!-- Inside v-for blocks we have full access to parent scope properties. -->
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+      </li>
+    </ul>
+    
+    <script>
+      const vm3 = Vue.createApp({
+        data() {
+          return {
+            parentMessage: "Parent",
+            items: [{ message: "Foo" }, { message: "Bar" }],
+          };
+        },
+      }).mount("#app3");
+    </script>
+    <!---------------------------------------------------->    
+  </body>
+</html>

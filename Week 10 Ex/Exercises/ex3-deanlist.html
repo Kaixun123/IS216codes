@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wk10 Ex 3 - DeanList</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+
+  <body>
+	<!-- 
+	  TODO: Edit this file so that only students in the dean's list will appear in the UL. 
+	-->
+	
+    <!---------------------------------------------------->
+	<h1> Students on the Dean's List </h1>
+    <ul id="app1">	
+      <li v-for="student in students">
+	      {{student.name}} - {{student.isInDeanList}}
+      </li>
+    </ul>
+
+    <script>
+      const vm1 = Vue.createApp({
+        data() {
+          return {
+             students: [
+              {name:"Peter",isInDeanList:true}, 
+			        {name:"Jane" ,isInDeanList:true}, 
+					    {name:"Bixsy",isInDeanList:false},
+					    {name:"Amandar",isInDeanList:false},
+					    {name:"Annabelle",isInDeanList:true}],
+          };
+        },
+      }).mount("#app1");
+    </script>
+
+    <!---------------------------------------------------->
+	<!-- attempt to show only students who are on the dean's list -->
+	<!-- does not work because v-if is evaluated before v-for -->
+
+	<h1> Students on the Dean's List </h1>
+    <ul id="app2">
+      <li v-for="student in deanlistStudents">
+	      {{student.name}} 
+      </li>
+    </ul>
+
+	
+    <script>
+      const vm2 = Vue.createApp({
+        data() {
+          return {
+            students: [
+              {name:"Peter",isInDeanList:true}, 
+			        {name:"Jane" ,isInDeanList:true}, 
+					    {name:"Bixsy",isInDeanList:false},
+					    {name:"Amandar",isInDeanList:false},
+					    {name:"Annabelle",isInDeanList:true}],
+          };
+        },
+        computed:{
+          deanlistStudents(){
+            return this.students.filter((student) => student.isInDeanList)
+            //https://www.w3schools.com/jsref/jsref_filter.asp
+          }
+        }
+      }).mount("#app2");	  
+    </script>
+
+  </body>
+</html>

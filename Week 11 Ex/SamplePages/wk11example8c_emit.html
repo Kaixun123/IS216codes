@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Example8c - Emit (with data payload)</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id = "app">
+        <div :style="{ 'font-size': fontSize + 'em' }">
+            <product @enlarge="onEnlarge"></product>
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({ 
+            data() {
+                return {
+                    fontSize: 1
+                }
+            },
+            methods: {
+                onEnlarge(eventData) {  // event handler with 1 para
+					console.log("eventData = " + eventData);
+                    this.fontSize += parseFloat(eventData);
+					console.log("new fontSize = " + this.fontSize);
+                }
+            }			
+         })
+
+        app.component('product', {
+            data() {
+                return {
+                    id: 1, 
+					name: 'iPhone', 
+					desc: '<p>This is the best phone in the world!</p>',
+					factor: 0.1,  // new ppty
+                }
+            },		
+            props: ['prod'],
+            template: `<div>
+							Enlargement factor: <input v-model='factor'> 
+                            <h3>{{id}} {{name}}</h3>
+                            <button @click="$emit('enlarge', factor)">  <!-- event payload -->
+                                Enlarge text </button>
+                            <div v-html='desc' />
+                        </div>`
+        })
+        
+        const vm = app.mount('#app')
+    </script>
+
+</body>
+</html>

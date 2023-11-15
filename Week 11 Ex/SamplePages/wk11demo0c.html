@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Demo0c - accessing component ppty</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id = "app">
+        <product name="iPhone"  price="1000" imagefile="./img/phone1.jpg" available="true"></product> 
+        <product name="Samsung" price="900"  imagefile="./img/phone2.jpg" available="false"></product> 
+        <product name="Oppo"    price="500"  imagefile="./img/phone3.jpg" available="false"></product> 
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    // instance property here
+                } 
+            }		
+        })
+
+		// component
+        app.component('product', {     
+            data() {
+                return {
+                    displayprice: false  // component property
+                } 
+            },                    
+            props: ['name', 'price', 'available', 'imagefile'], 
+            template: `<div>  <!-- can use props (name, price, available, imagefile) directly -->
+							  <!-- can use component ppty (displayprice) directly -->
+                         <h1>Product Name: {{ name }}</h1>
+                         <img :src="imagefile" width='100' height='100'>
+                         <h2 v-if="displayprice">Price:$ {{ price }}. </h2>
+                         <span style="color:red" v-if="available=='true'">In Stock!</span>
+                         <hr>
+                       </div>`
+        })
+
+        const vm = app.mount('#app')
+    </script>
+
+</body>
+</html>

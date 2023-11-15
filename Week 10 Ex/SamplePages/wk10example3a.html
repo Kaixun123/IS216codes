@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wk9 Example 3a - Dynamic Property (radio buttons)</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id='app1'>
+        <!-- bind a vue variable to a Vue property dynamically using radio buttons -->
+        <!-- when checked vm.pick === vm.pptyA -->
+        <input type="radio" v-model="pick" v-bind:value="pptyA">A
+		
+        <!-- when checked vm.pick === vm.pptyB -->
+        <input type="radio" v-model="pick" v-bind:value="pptyB">B
+        <p> Picked: {{ pick }} </p>
+    </div>
+
+    <script>
+        const vm1 = Vue.createApp({
+            data() {
+                return {
+                    pick: '',
+                    pptyA: 'Audi',
+                    pptyB: 'BMW'
+                }
+            }
+        }).mount('#app1');
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Demo0d - indirectly accessing instance ppty via prop</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id = "app">
+        <!-- you can use v-bind to bind an attribute's value to an instance property -->
+        <product name="iPhone"  price="1000" imagefile="./img/phone1.jpg" available="true" :displayprice="showprice" ></product> 
+		
+        <product name="Samsung" price="900"  imagefile="./img/phone2.jpg" available="false" :displayprice="showprice" ></product> 
+		
+        <product name="Oppo"    price="500"  imagefile="./img/phone3.jpg" available="false" :displayprice="showprice" ></product> 
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    showprice: true  // instance property here
+                } 
+            }
+        })
+
+		// component - can access instance property using this.<instance_property>
+        app.component('product', {  
+            data() {
+                return {
+                    // component property here
+                } 
+            },		
+            props: ['name', 'price', 'available', 'imagefile', 'displayprice'],  // new prop displayprice
+            template: `<div>  <!-- can use props (name, price, available, imagefile) directly -->
+			                  <!-- can use props (displayprice) directly -->
+                         <h1>Product Name: {{ name }}</h1>  
+                         <img :src="imagefile" width='100' height='100'>
+                         <h2 v-if="displayprice">Price:$ {{ price }}. </h2>
+                         <span style="color:red" v-if="available=='true'">In Stock!</span>
+                         <hr>
+                       </div>`
+        })
+
+        const vm = app.mount('#app')
+    </script>
+
+</body>
+</html>

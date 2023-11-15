@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Example2a - Counter</title>
+    <!-- vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id = "app">
+        <button-counter></button-counter>
+		<hr/>
+        <button-counter></button-counter>
+    </div>
+
+    <script>
+        const app = Vue.createApp({});
+
+        app.component('button-counter', {
+            data() {  // data option of the component
+                return {
+                    count: 0 // notice that components don't share data
+                }
+            },
+            template: ` <div>
+                          <p>If you like my page, click 
+                            <button @click="count++">Like</button>
+                          </p>
+                          <p>
+                             People liked me {{ count }} times.
+                          </p>
+                          <p v-if="count>3"> I am POPU-LAR.</p>
+                        </div>`
+        })
+
+        const vm = app.mount('#app');
+    </script>
+</body>
+</html>

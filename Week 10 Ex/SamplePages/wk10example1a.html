@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk9 Example 1a - Demo: diff between Methods and Computed Properties</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <!-- use Chrome's console to update vm.fName and vm.lName and observe which method/computed property executes! -->
+</head>
+
+<body>
+    <div id="app">
+        <p>Full Name (variables): "{{ fName + ' ' + lName }}"</p>
+        <p>Full Name (computed): "{{ fullNameComputed }}"</p>
+        <p>Full Name (method): "{{ fullNameMethod() }}"</p>
+        <hr>
+        <p>Last Name (variable): "{{ lName }}"</p>
+        <p>Last Name (computed): "{{ lastNameComputed }}"</p>
+        <p>Last Name (method): "{{ lastNameMethod() }}"</p>
+        <hr>
+        <p>Time now (computed): "{{ currentTimeComputed }}"</p>
+        <p>Time now (method): "{{ currentTimeMethod() }}"</p>
+        <hr>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    fName: 'Mike',
+                    lName: 'Jones'
+                }
+            },
+            methods: {
+                fullNameMethod() {  
+                    console.log("running fullNameMethod");
+                    return this.fName + ' ' + this.lName   
+                },
+                lastNameMethod() {  
+                    console.log("running lastNameMethod");
+                    return this.lName   
+                },
+                currentTimeMethod(){
+                    console.log("running currentTimeMethod");
+                    return Date(Date.now()).toString();   // Date.now() returns the no. of millisecs since 1/1/1970
+                }
+            },            
+            computed: {
+                fullNameComputed() {  
+                    console.log("running fullNameComputed");
+                    return this.fName + ' ' + this.lName   
+                },
+                lastNameComputed() {  
+                    console.log("running lastNameComputed");
+                    return this.lName   
+                },
+                currentTimeComputed(){  // not a good idea
+                    console.log("running currentTimeComputed");
+                    return Date(Date.now()).toString();   // Date.now() returns the no. of millisecs since 1/1/1970
+                }
+            }
+        });
+        const vm = app.mount('#app');
+    </script>
+
+</body>
+</html>

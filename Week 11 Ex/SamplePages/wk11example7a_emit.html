@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wk11 Example7a - Emit</title>
+    <!-- vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id = "app">
+        <button-counter @reachtarget="onReachTarget"></button-counter>
+    </div>
+
+    <script>
+		// Vue instance
+        const app = Vue.createApp({
+            methods: {
+                onReachTarget() {
+                    console.log("target reached!");
+                    alert("target reached!");
+                }
+            },            
+        });
+
+		// button-counter component
+        app.component('button-counter', {
+            data() {  // data option of the component
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                incrCount() {
+                    this.count++;
+                    if (this.count >= 3){
+                        this.$emit('reachtarget');
+                    }
+                }
+            },
+            template: ` <div>
+							<p>If you like my page, click 
+								<button @click="incrCount()">Like</button>
+							</p>
+							<p>People liked me {{ count }} times.</p>
+                        </div>`
+        })
+
+		// mount
+        const vm = app.mount('#app');
+    </script>
+</body>
+</html>

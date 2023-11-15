@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wk11 Example1</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="test">
+        <my-component c="red">Some text</my-component>
+        <my-component></my-component>
+        <my-component2></my-component2>
+    </div>
+    
+    <script>
+		// create Vue instance
+        const app = Vue.createApp({}); 
+
+		// Define component 1
+        app.component('my-component', {
+            props: ['c'],
+            template: ` <div>
+                          <p>Here is a <font :color="c" >custom</font> <slot/> component</p>
+                        </div> `
+        })
+        //<font> tag is a html way of doing things: older way of doing thingsz
+
+		// Define component 2
+        app.component('my-component2', {
+            template: ` <div style="font-style: italic">
+                          <h2>Here is my 2nd component!</h2>
+                        </div> `
+        })
+
+		// mount the Vue instance
+        app.mount('#test')
+       
+    </script>
+</body>
+</html>

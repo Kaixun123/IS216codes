@@ -96,7 +96,7 @@
         function getLoc() {
             var addr = encodeURI(document.getElementById("addr").value);
             console.log(addr);
-            var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addr + "&key=AIzaSyAaEnE_e4uzuT-FKFOE2NutXTEgY6XsEuE";  // <-- change here
+            var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addr + "";  // <-- change here
 
             // axio call
             axios.get(url)

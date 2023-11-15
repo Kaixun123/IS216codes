@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wk10 Example 3b - Dynamic Property (drop down list using v-for)</title>
+    <!-- using CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app2">
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.pptyValue">
+                {{ option.pptyText }}
+            </option>
+        </select>
+        <span> Selected: {{ selected }}</span>
+    </div>
+
+    <script>
+        const vm2 = Vue.createApp({
+            data() {
+                return {
+                    selected: '',
+                    options: [
+                        { pptyText: 'One', pptyValue: 'Joe Biden' },
+                        { pptyText: 'Two', pptyValue: 'Donald Trump' },
+                        { pptyText: 'Three', pptyValue: 'Barrack Obama' },
+                        { pptyText: 'Four', pptyValue: 'Ronald Reagen' }
+                    ]
+                } 
+            }
+        }).mount('#app2');
+    </script>
+</body>
+</html>

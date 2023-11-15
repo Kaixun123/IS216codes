@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wk10 Ex 2 - Calculator</title>
+  <!-- using CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    p, input { font-family: monospace; }
+    p { white-space: pre; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <p>x <input v-model.number="x"></p>
+    <select v-model="selectedOp">
+        <option v-for="op in operators" >{{ op }}</option>
+    </select>
+    <p>y <input v-model.number="y"></p>
+    
+    <p>---------------------</p>
+
+    <p>= {{result}}</p>
+  </div>
+ 
+  <script>
+    //TODO: create a Vue instance to complete the task
+    Vue.createApp({
+      data(){
+        return{
+          x: '',
+          y: '',
+          selectedOp: "+",
+          operators: [
+            "*", "+", "-", "/"
+          ],
+        }
+      },
+      computed:{
+        result(){
+          switch(this.selectedOp){
+            case "+":
+              return this.x + this.y;
+            case "-":
+              return this.x - this.y;
+            case "/":
+              return this.x / this.y;
+            case "*":
+              return this.x * this.y;
+          }
+          //eval(this.x + this.selectedOp + this.y)
+        }
+      }
+    }).mount("#app")
+  </script>
+</body>
+</html>

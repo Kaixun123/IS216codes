@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wk11 Example6b - named slots</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!-- 
+        The following demonstrates named-slots. Note: the same functionality can be 
+        achieved using ‘props’ but it’s probably easier to use slots when data need not be manipulated.
+    -->
+
+    <div id="app2">
+        <book>
+            <template v-slot:author>
+                <h3>{{ author }}</h3>
+            </template>
+			
+            <template v-slot:title>
+                <h3>{{ title }}</h3>
+            </template>
+        </book>
+        <!-- 
+            the result is:
+            <div>
+                <h3>VusJS in Action</h3>
+                <h3>Erik Hanchett</h3>
+            </div>
+        -->
+
+    </div>
+    <script>
+        const app2 = Vue.createApp({
+            data() {
+                return {
+                    title: 'VueJS in Action',
+                    author: 'Erik Hanchett'
+                }  
+            }
+        })
+
+        app2.component('book', {
+            template: `<div>
+                            <slot name='author'></slot>  
+                            <slot name='title'></slot>         
+                        </div>`
+        })
+
+        const vm = app2.mount('#app2')
+    
+    </script>
+    <!-- bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
