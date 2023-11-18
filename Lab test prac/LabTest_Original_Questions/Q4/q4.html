@@ -1,0 +1,82 @@
+<!-- DO NOT MODIFY THIS FILE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="draw.js"></script>
+    <script src="q4.js"></script>
+
+
+    <style>
+        /* CSS styling for the chart */
+        .bar {
+          fill: steelblue;
+        }
+    </style>
+
+</head>
+
+<body onload="showSales()">
+
+    <table>
+        <tr>
+            <td> <svg id="sales1"></svg></td>
+            <td> <svg id="sales2"></svg></td>
+        </tr>
+        <tr>
+            <td> <svg id="mergedsales"></svg></td>
+            <td> <svg id="sortedsales"></svg></td>
+        </tr>
+    </table>
+
+    <script>
+        // DO NOT MODIFY THE FOLLOWING CODE
+        var url1 = "sales1.json"
+        var url2 = "sales2.json"
+        
+        function showSales() {
+            computeSales("#sales1", "Sales1", url1)
+            computeSales("#sales2", "Sales2", url2)
+
+            mergeSales("#mergedsales", "Merged Sales", url1, url2)
+            sortSales("#sortedsales", "Sorted Sales", url1, url2)
+        }
+
+        function computeSales(elem, title, url) {
+            var data = [] // data to display
+            
+            axios
+            .get(url)
+            .then((response) => {
+                // retrieve sales from sales
+                let sales = response.data;
+                console.log(sales)
+
+                let authorSales = {} 
+            
+                for(let item of sales.books) {  
+                    if(item.author in  authorSales) { 
+                        authorSales[item.author] += item.sales 
+                    } else {
+                        authorSales[item.author] = item.sales
+                    }
+                }
+
+                for(let author in authorSales) {
+                    let x = { "author": author, "sales": authorSales[author] }
+                    data.push(x)
+                }
+
+                display(elem, data, title)
+                
+            })
+        }
+    </script>
+   
+</body>
+</html>

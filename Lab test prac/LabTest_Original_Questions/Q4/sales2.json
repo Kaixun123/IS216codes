@@ -1,0 +1,19 @@
+{
+    "books": [
+        {
+            "title": "The Casual Vacancy",
+            "author": "J.K. Rowling",
+            "sales": 3
+        },
+        {
+            "title": "Fantastic Beasts",
+            "author": "J.K. Rowling",
+            "sales": 2
+        },
+        {
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "sales": 10
+        }
+    ]
+}

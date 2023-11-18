@@ -1,0 +1,195 @@
+<!--
+    
+Name:   
+Email:  
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP CSS
+    -->
+    <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css">
+
+    <title>Q2 - Payment</title>
+</head>
+<body>
+
+
+    
+    <!-- Image and Page Header -->
+
+    <div class="container">
+        <div class="row justify-content-center">
+                <img class="rounded-circle w-auto h-auto" src="logo.jpg">
+                <h2 class="text-center">Checkout</h2> 
+        </div>
+        <div class="row">
+            <div class="col-md-8 mb-3 bg-black text-white order-sm-last order-last">
+               <!-- Billing Form -->
+                <h4 class="mt-3">Billing address</h4>
+
+                <div class="row mb-3 g-3">
+                    <div class="col-md-6 col-sm-6">
+                        <label for="firstName" class="form-label">First name</label>
+                        <input type="text" id="firstName" class="form-control" placeholder="" value="" required>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <label for="lastName" class="form-label">Last name</label>
+                        <input type="text" id="lastName"  class="form-control" placeholder="" value="" required>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3 g-3">
+                    <div class="col-md-12">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3 g-3">
+                    <div class="col-md-6">
+                        <label for="country" class="form-label">Country</label>
+                        <select id="country" class="form-control" required>
+                            <option value="">Choose...</option>
+                            <option>Canada</option>
+                            <option>Singapore</option>
+                            <option>United States</option>
+                        </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="postal" class="form-label">Postal Code</label>
+                        <input type="text" id="postal" class="form-control" placeholder="" required>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h4 class="mt-3">Credit Card</h4>
+
+                <div class="row mb-3 g-3">
+                    <div class="col-md-6">
+                        <label for="cc-name" class="form-label">Name on card</label>
+                        <input type="text" id="cc-name" class="form-control" placeholder="" required>
+                        <small >Full name as displayed on card</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cc-number" class="form-label">Credit card number</label>
+                        <input type="text" id="cc-number" class="form-control" placeholder="" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3 g-3">
+                    <div class="col-md-6">                
+                        <label for="cc-expiration" class="form-label">Expiration</label>
+                        <input type="text" id="cc-expiration" class="form-control" placeholder="" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cc-cvv" class="form-label" >CVV</label>
+                        <input type="text" id="cc-cvv" class="form-control" placeholder="" required>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row mb-3 g-1">
+                    <button type="submit" class="btn btn-primary">Continue to checkout</button>  
+                </div>
+
+            </div>
+            <div class="col-md-4 bg-info order-md-last order-sm-first order-first mb-sm-3">
+                <!-- cart -->
+                    <h4 class="mt-3">
+                        <span class="text-primary">Your cart</span>
+                        <span class="badge text-bg-warning rounded-circle float-end">3</span>
+                    </h4>
+
+                    <div class="row mb-3 mt-3 g-1">
+                        <!-- cart items -->
+                        <ul class="list-group">
+
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                  <div class="fw-bold">Bathroom Detergent</div>
+                                  <small>3-bundle pack</small>
+                                </div>
+                                <span class="float-end">$30</span>
+                              </li>
+
+                              <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                  <div class="fw-bold">Black Coffee</div>
+                                  <small>20 sachets</small>
+                                </div>
+                                <span class="float-end">$20</span>
+                              </li>
+
+
+                              <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                  <div class="fw-bold">Kangaroo Facial Wash</div>
+                                  <small>Clearance Sale 60% off</small>
+                                </div>
+                                <span class="float-end">$10</span>
+                              </li>
+
+
+                              <li class="list-group-item d-flex justify-content-between align-items-start text-success">
+                                <div class="ms-2 me-auto">
+                                  <div class="fw-bold">Promo code</div>
+                                  <small>XMAS2021</small>
+                                </div>
+                                <span class="float-end">−$10</span>
+                              </li>
+
+
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <span>Total (USD)</span>
+                                <strong class="float-end">$50</strong>
+                            </li>
+
+                        </ul> 
+                    </div>
+
+                    <!-- redeem -->
+                    <div class="input-group mb-3 mt-3 p-2 g-1 bg-white">
+                        <input type="text" class="form-control" placeholder="Promo code"  aria-describedby="button-addon2">
+                        <button class="btn btn-secondary" type="submit" id="button-addon2">Redeem</button>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+       
+    
+
+
+
+
+
+   
+
+
+
+
+
+    
+
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP JAVASCRIPT
+    -->
+    <script src="../Bootstrap/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

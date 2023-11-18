@@ -1,0 +1,136 @@
+<!--
+    
+Name:   
+Email:  
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP CSS
+    -->
+    <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css">
+
+    <title>Q3 - Sentiment</title>
+</head>
+<body>
+
+
+
+    <!-- Main App -->
+    <div id="app" class="container-fluid">
+
+
+
+        <!-- Header -->
+        <div class="container-fluid py-2 text-center">
+            <h1> greeting goes here </h1>
+        </div>
+
+        
+
+        <!-- Body -->
+        <div class="row">
+
+            <!-- Left Panel (journel entry) -->
+            <div class="col-sm-6 p-3" style="background-color: rgb(253, 255, 155);">
+                
+                <div class="form-floating">
+
+                    <span class="fw-bold">
+                        Journal Entry
+                    </span>
+
+                    <textarea class="form-control" style="height: 140px">journal entry goes here...</textarea>
+
+                    <hr>
+
+                    <button type="button" class="btn btn-primary">
+                        How's My Sentiment Today?
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Right Panel (sentiment word counts) -->
+            <div class="col-sm-6 p-3" style="background-color: rgb(210, 247, 250);">
+                
+                <span class="fw-bold">
+                    Sentiment Words
+                </span>
+
+                <table class="table table-bordered border-dark">
+
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Word Count</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+
+                        <tr>
+                            <td> some category goes here... </td>
+                            <td> some count goes here... </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div><!-- [Body] end-row -->
+
+
+
+        <!-- Bottom -->
+        <div class="row mt-3">
+
+            <h2 class="text-center">Assessment</h2>
+            
+            <div class="col-sm-12 text-center">
+                
+                <img src="">
+
+            </div>
+
+        </div><!-- [Bottom] end-row -->
+
+
+
+
+    </div><!-- [Main App] end-container-->
+
+
+
+    
+
+
+
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP JAVASCRIPT
+    -->
+    <script src="../Bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO VUE 3 JAVASCRIPT
+    -->
+    <script src="vue.global.js"></script>
+    
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL EXTERNAL JAVASCRIPT
+     -->
+     <script src="sentiment.js"></script>
+
+</body>
+</html>

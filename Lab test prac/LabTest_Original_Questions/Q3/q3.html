@@ -1,0 +1,40 @@
+<!-- DO NOT MODIFY THIS FILE -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Recipe Box</title>
+    <style>
+      .card {
+        background-color:lightcyan;
+        border-radius: 10px;
+        border: 1px solid blue;
+        width: 20%;
+        margin:20px;
+      }
+
+      .card h3 {
+        text-align: center;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 10px 0px;
+      }
+    </style>
+    <script src="q3.js"></script>
+  </head>
+  <body onload="displayRecipe(0)">
+    <div class="wrapper">
+      <div class="card">
+          <h3 id="recipeName">Recipe 1</h3>
+          <ul id="ingredientList">
+          </ul>
+          <div class="footer">
+          <button id="btnPrev" onclick="changeRecipe(false)">Prev</button>
+          &nbsp;
+          <button id="btnNext" onclick="changeRecipe(true)">Next</button>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

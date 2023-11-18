@@ -1,0 +1,87 @@
+<!--
+    
+Name:   
+Email:  
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP CSS
+    -->
+    <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css">
+
+    <title>Q1 - Grocery</title>
+
+    <!-- CSS (Use this section if you need to) -->
+    <style>
+
+        /* YOUR CSS CODE GOES HERE */
+        .contentTitle{
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .enterList{
+            border: 1px grey solid;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .calculation{
+            border: 1px grey solid;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    </style>
+    
+</head>
+<body>
+
+    
+    <!--
+        YOUR CODE GOES HERE
+    -->
+    <div class="container w-80">
+        <div class="row gap-4 justify-content-center"> 
+        <h4 class="contentTitle">Shopping List</h4>
+            <div class="col col-md-4 form-group enterList">
+                <form class="form-group">
+                    <div class="input-group mb-3 mt-3 p-2 g-2 bg-white">
+                        <span class="input-group-text" id="basic-addon3">What to Buy</span>
+                        <input type="text" class="form-control" placeholder="Enter item name" id="items" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-info" type="button" onclick="addItem()">Redeem</button>
+                    </div>
+                    <div id="itemList"></div>
+                </form>
+            </div>
+            <div class="col col-md-4 calculation">
+                <p>Calculate Total Amount</p>
+                <button class="btn btn-outline-info"  onclick="processItems()">Calculate</button>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP JAVASCRIPT
+     -->
+     <script src="../Bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL EXTERNAL JAVASCRIPT
+     -->
+     <script src="grocery.js"></script>
+
+</body>
+</html>

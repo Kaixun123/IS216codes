@@ -1,0 +1,108 @@
+<!--
+    
+Name:   KIM Jong Un
+Email:  kim.jongun.2022
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP CSS
+    -->
+    <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css">
+
+    <title>Q1 - Grocery</title>
+
+    <!-- CSS (Use this section if you need to) -->
+    <style>
+
+        /* YOUR CSS CODE GOES HERE */
+        ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        
+    </style>
+    
+</head>
+<body>
+
+    <div id="main_container" class="container" width="80%" style="margin-top: 20px">
+
+        <h4 class="text-center">Shopping List</h4>
+
+        <div class="row" style="margin-top: 30px">
+            
+            <div class="col">
+                
+                <div class="border bg-light" style="padding: 15px">
+                
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">What to Buy</span>
+                        </div>
+
+                        <input type="text" id="groceryItem" class="form-control" style="width: 20px" placeholder="Enter item name">
+                        
+                        <button type="button" 
+                                style="margin-left: 15px"
+                                class="btn btn-outline-info" onclick="addItem()">Add</button>
+                                        
+                    </div>
+
+                    <div>
+
+                        <div id="groceryList">
+                        </div>
+
+                    </div>
+
+                </div>
+            
+            </div> <!-- end of col -->
+            
+
+            <div class="col">
+
+                <div class="border bg-light" style="padding: 15px">
+
+                    <h6>Calculate Total Amount</h6>
+
+                    <button type="button"  class="btn btn-outline-info"onclick="processItems()">Calculate</button>
+
+                    <div id="result">
+
+                    </div>
+                    
+                </div>
+
+            </div> <!-- end of col -->
+        
+
+        </div> <!-- end of row -->
+
+
+    </div> <!-- End of Outer Div Container -->
+
+
+
+    
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP JAVASCRIPT
+     -->
+     <script src="../Bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL EXTERNAL JAVASCRIPT
+     -->
+     <script src="grocery.js"></script>
+
+</body>
+</html>

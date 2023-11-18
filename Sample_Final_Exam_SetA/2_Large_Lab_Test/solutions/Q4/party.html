@@ -1,0 +1,158 @@
+<!--
+    
+Name:   KIM Jong Un
+Email:  kim.jongun.2022
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP CSS
+    -->
+    <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css">
+
+    <title>Q4 - Party</title>
+</head>
+<body>
+
+
+
+    <!-- Main App -->
+    <div id="app" class="container-fluid">
+
+
+
+        <!-- Header -->
+        <div class="container-fluid py-2 text-center">
+            <h1>{{ greeting }}</h1>
+        </div>
+
+        
+
+        <!-- Body -->
+        <div class="row">
+
+            <!-- Left Panel (add email addresses) -->
+            <div class="col-sm-4 p-3" style="background-color: rgb(253, 255, 155);">
+                
+                <div class="form-floating">
+
+                    <span class="fw-bold">
+                        Enter email addresses
+                    </span>
+                    <br>
+                    <span>
+                        (separated by comma)
+                    </span>
+
+                    <textarea class="form-control" style="height: 140px" v-model="new_emails"></textarea>
+
+                    <hr>
+
+                    <button type="button" class="btn btn-primary" v-on:click="add_to_directory()">
+                        Add to Directory
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Right Panel (Email Directory) -->
+            <div class="col-sm p-3" style="background-color: rgb(210, 247, 250);">
+                
+                <table class="table table-bordered border-dark">
+
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Email Address</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+
+                        <tr v-for="item in directory">
+                            <td>
+                                <input class="form-check-input" type="checkbox" 
+                                    v-bind:value="item.email" v-model="party_email_addresses">
+                            </td>
+                            <td> {{ item.email }} </td>
+                            <td> {{ item.category }} </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div><!-- [Body] end-row -->
+
+
+
+        <!-- Bottom -->
+        <div class="row mt-3">
+
+            <h2 class="text-center">Party Invitation</h2>
+            
+            <div class="col-sm-12">
+                
+                <!-- form -->
+                <form>
+
+                    <div class="mb-3">
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-control" v-model="party_email_subject">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" rows="3" v-model="party_email_message"></textarea>
+                    </div>
+
+                    <button type="button" class="btn btn-danger" v-on:click="send_party_invitation">
+                        Send Invitation
+                    </button>
+
+                </form><!-- end-form -->
+
+            </div>
+
+        </div><!-- [Bottom] end-row -->
+
+
+
+
+    </div><!-- [Main App] end-container-->
+
+
+
+    
+
+
+
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP JAVASCRIPT
+    -->
+    <script src="../Bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO VUE 3 JAVASCRIPT
+    -->
+    <script src="vue.global.js"></script>
+    
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL EXTERNAL JAVASCRIPT
+     -->
+     <script src="party.js"></script>
+
+</body>
+</html>

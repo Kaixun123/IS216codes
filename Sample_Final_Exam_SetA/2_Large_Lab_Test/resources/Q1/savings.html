@@ -1,0 +1,104 @@
+<!--
+    
+Name:  Juay Kai Xun
+Email:  kaixun.juay.2022 
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!--
+          This program calculate how long it takes for you to reach your goal
+          based on a given interest rate (per year)
+     -->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+     <!-- DO NOT REMOVE
+          REFERENCE TO LOCAL BOOTSTRAP CSS
+     -->
+     <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css">
+ 
+     <title>Q1 - Savings</title>
+     <style>
+          .savings{
+               margin-top: 40px;   
+               margin-bottom: 30px;
+          }
+
+          .subtitle{
+               color:blue;
+               margin-bottom: 48px;
+          }
+
+          .moneyGroup{
+               margin-bottom: 16px;
+          }
+
+          .moneyGroupLast{
+               margin-bottom: 48px;
+          }
+
+          #savingResults{
+          width:500px;
+          }
+
+          .resultTitle{
+               color:green;
+               margin-top: 30px;
+               margin-bottom: 20px;
+          }
+     </style>
+</head>
+<body>
+     
+     
+     <!--
+          YOUR CODE GOES HERE
+     -->
+     <div class="container w-70">
+          <div class="row justify-content-center">
+               <div class="col-md-10">
+                    <h1 class="text-center savings"> Savings </h1>
+                    <h4 class=" text-center subtitle">How long does it take for me to reach My Goal?</h4>
+                    <form class="form-group">
+                         <div class="input-group moneyGroup">
+                              <span class="input-group-text" id="basic-addon3">initial Amount($)</span>
+                              <input type="number" class="form-control" id="initalAmt" min=0 required aria-describedby="basic-addon3">
+                         </div>
+                         <div class="input-group moneyGroup">
+                              <span class="input-group-text" id="basic-addon3">Yearly Interest(%)</span>
+                              <input type="number" class="form-control" id="yearlyInt" min=0 required aria-describedby="basic-addon3">
+                         </div>
+                         <div class="input-group moneyGroupLast">
+                              <span class="input-group-text" id="basic-addon3">My Goal($)</span>
+                              <input type="number" class="form-control" id="myGoal" min=0 required aria-describedby="basic-addon3">
+                         </div>
+                    </form>
+                      <button class="btn btn-danger" onclick="calculate(document.getElementById('initalAmt').value,document.getElementById('yearlyInt').value,document.getElementById('myGoal').value)">Calculate</button>
+               <div id="savingResults">
+
+               </div>
+               </div>
+          </div>
+
+     </div>
+
+     
+
+
+     <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP JAVASCRIPT
+     -->
+     <script src="../Bootstrap/bootstrap.bundle.min.js"></script>
+
+     <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL EXTERNAL JAVASCRIPT
+     -->
+     <script src="savings.js"></script>
+     
+</body>
+</html>
+
+

@@ -1,0 +1,141 @@
+<!--
+    
+Name:   
+Email:  
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP CSS
+    -->
+    <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css">
+
+    <title>Q2 - Payment</title>
+</head>
+<body>
+
+
+    
+    <!-- Image and Page Header -->
+    <img src="logo.jpg">
+    <h2>Checkout</h2>
+
+
+
+
+       
+    <!-- Billing Form -->
+    <h4>Billing address</h4>
+
+    <label for="firstName">First name</label>
+    <input type="text"id="firstName" placeholder="" value="" required>
+
+    <label for="lastName">Last name</label>
+    <input type="text" id="lastName" placeholder="" value="" required>
+
+    <label for="address">Address</label>
+    <input type="text" id="address" placeholder="1234 Main St" required>
+
+    <label for="country">Country</label>
+    <select id="country" required>
+        <option value="">Choose...</option>
+        <option>Canada</option>
+        <option>Singapore</option>
+        <option>United States</option>
+    </select>
+
+    <label for="postal">Postal Code</label>
+    <input type="text" id="postal" placeholder="" required>
+
+    <hr>
+
+    <h4>Credit Card</h4>
+
+    <label for="cc-name">Name on card</label>
+    <input type="text" id="cc-name" placeholder="" required>
+    <small >Full name as displayed on card</small>
+
+    <label for="cc-number">Credit card number</label>
+    <input type="text" id="cc-number" placeholder="" required>
+
+    <label for="cc-expiration">Expiration</label>
+    <input type="text" id="cc-expiration" placeholder="" required>
+
+    <label for="cc-cvv" >CVV</label>
+    <input type="text" id="cc-cvv" placeholder="" required>
+
+    <hr>
+
+    <button type="submit">Continue to checkout</button>
+
+
+
+
+
+    <!-- cart -->
+    <h4>
+        <span>Your cart</span>
+        <span>3</span>
+    </h4>
+
+
+
+    <!-- cart items -->
+    <ul>
+
+        <li>
+            <h6>Bathroom Detergent</h6>
+            <small>3-bundle pack</small>
+            <span>$30</span>
+        </li>
+
+        <li>
+            <h6>Black Coffee</h6>
+            <small>20 sachets</small>
+            <span>$20</span>
+        </li>
+
+        <li>
+            <h6>Kangaroo Facial Wash</h6>
+            <small>Clearance Sale 60% off</small>
+            <span>$10</span>
+        </li>
+
+        <li>
+            <h6>Promo code</h6>
+            <small>XMAS2021</small>
+            <span>−$10</span>
+        </li>
+
+
+        <li>
+            <span>Total (USD)</span>
+            <strong>$50</strong>
+        </li>
+
+    </ul>
+
+    <!-- redeem -->
+    <input type="text" placeholder="Promo code">
+    <button type="submit">Redeem</button>
+
+
+
+
+
+    
+
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP JAVASCRIPT
+    -->
+    <script src="../Bootstrap/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

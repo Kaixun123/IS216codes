@@ -1,0 +1,96 @@
+<!--
+    
+Name:   KIM Jong Un
+Email:  kim.jongun.2022
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!--
+          This program calculate how long it takes for you to reach your goal
+          based on a given interest rate (per year)
+     -->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+     <!-- DO NOT REMOVE
+          REFERENCE TO LOCAL BOOTSTRAP CSS
+     -->
+     <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css">
+ 
+     <title>Q1 - Savings</title>
+</head>
+<body>
+     
+     <div class="container" style="width:70%">
+          
+
+          <h1 class="text-center" style="margin-top:40px">  Savings </h1>
+
+          
+          <h3 class="text-center text-primary" style="margin-top:30px" > How long does it take for me to reach My Goal ? </h3>
+          
+          
+          <div class="input-group" style="margin-top:48px">
+
+               <div class="input-group-prepend">
+                    <span class="input-group-text">Initial Amount ($) </span>
+               </div>
+
+               <input type="number" min=0 class="form-control" id="myAmt" aria-describedby="basic-addon3" >
+          </div>
+
+          
+          <div class="input-group" style="margin-top:16px">
+
+               <div class="input-group-prepend">
+                    <span class="input-group-text">Yearly Interest (%) </span>
+               </div>
+               
+               <input type="number" min=0 class="form-control" id="myInterest" aria-describedby="basic-addon3" >
+          </div>
+
+          
+          <div class="input-group" style="margin-top:16px; margin-bottom:48px">
+
+               <div class="input-group-prepend">
+                    <span class="input-group-text">My Goal ($) </span>
+               </div>
+               
+               <input type="number" min=0 class="form-control" id="myGoal" aria-describedby="basic-addon3" >
+          </div>
+
+          
+          <button type="button" class="btn btn-danger"onclick="calculate()">Calculate</button>
+          
+     </div>
+     
+     
+
+     <!-- Result Show Below -->
+     <div class="container" id="result" style="width:70%">
+     
+     </div>
+
+
+
+
+
+
+
+     <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP JAVASCRIPT
+     -->
+     <script src="../Bootstrap/bootstrap.bundle.min.js"></script>
+
+     <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL EXTERNAL JAVASCRIPT
+     -->
+     <script src="savings.js"></script>
+     
+</body>
+</html>
+
+
