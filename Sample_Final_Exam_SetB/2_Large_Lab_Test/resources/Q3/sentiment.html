@@ -29,8 +29,8 @@ Email:
 
         <!-- Header -->
         <div class="container-fluid py-2 text-center">
-            <h1> greeting goes here </h1>
-        </div>
+            <h1> {{ greeting }} </h1>
+        </div> 
 
         
 
@@ -46,11 +46,11 @@ Email:
                         Journal Entry
                     </span>
 
-                    <textarea class="form-control" style="height: 140px">journal entry goes here...</textarea>
+                    <textarea class="form-control" style="height: 140px" v-model="journal_entry">journal entry goes here...</textarea>
 
                     <hr>
 
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" @click="process_entry()">
                         How's My Sentiment Today?
                     </button>
 
@@ -77,9 +77,9 @@ Email:
                     
                     <tbody>
 
-                        <tr>
-                            <td> some category goes here... </td>
-                            <td> some count goes here... </td>
+                        <tr v-for="(senti, key) in sentiment_word_counts">
+                            <td> {{ key }} </td>
+                            <td> {{ senti }} </td>
                         </tr>
 
                     </tbody>
@@ -99,7 +99,7 @@ Email:
             
             <div class="col-sm-12 text-center">
                 
-                <img src="">
+                <img :src="img_src">
 
             </div>
 

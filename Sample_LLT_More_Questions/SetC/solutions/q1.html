@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Big Bang Fan Club</title>
+    <!-- Vue.js 3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <div id="main">
+        
+        <table border='1'>
+
+            <!-- DO NOT MODIFY THIS -->
+            <tr>
+                <td colspan='3' align='center'>
+                    <h3>Step 1: Select Celebrity</h3>
+                </td>
+            </tr>
+
+
+            <!-- YOU NEED TO MODIFY THE BELOW -->
+            <tr>
+                <td v-for="(value, key) in available_celebs">
+                    <img :src="value">
+                </td>
+            </tr>
+
+
+            <!-- YOU NEED TO MODIFY THE BELOW -->
+            <tr>
+                <td v-for="(img_src, name) in available_celebs">
+                    <input type="radio" v-model="selected_celeb" :value="name">
+                    {{ name }}
+                </td>
+            </tr>
+
+
+            <!-- DO NOT MODIFY THIS -->
+            <tr>
+                <td colspan='3' align='center'>
+                    <h3>Step 2: Choose Activities</h3>
+                </td>
+            </tr>
+
+
+            <!-- YOU NEED TO MODIFY THE BELOW -->
+            <tr>
+                <td v-for="activity_object in available_activities">
+                    <input type='checkbox' v-model="selected_activities" :value="activity_object">
+                    {{ activity_object.name }} (${{ activity_object.price }})
+                </td>
+            </tr>
+
+        </table>
+
+
+        
+        <hr>
+
+
+        
+        <!-- Bill Table Must Show Here -->
+        <!-- YOU NEED TO MODIFY THE BELOW -->
+        <div v-if=" total_bill != null ">
+            <h1 >Your Bill</h1>
+
+            <div v-html="total_bill">
+            </div>
+
+        </div>
+
+            
+
+
+
+
+    </div>
+
+
+
+    <!-- External (local) JavaScript -->
+    <script src="q1.js"></script>
+</body>
+</html>

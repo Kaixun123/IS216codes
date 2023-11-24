@@ -1,0 +1,98 @@
+<!-- Do NOT EDIT -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Local Vue 3 -->
+    <script src="vue.global.js"></script>
+
+    <style>
+        ul {
+            list-style-type: disc;
+        }
+    </style>
+
+    <title>Q4 - format_obj</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p><strong>Simple object (displayed as unordered list)</strong></p>
+        <format_obj :data="obj"></format_obj>
+
+        <p><strong>Simple array (displayed as ordered list)</strong></p>
+        <format_obj :data="arr"></format_obj>
+
+        <p><strong>Literal value (displayed as plain text)</strong></p>
+        <format_obj :data="val"></format_obj>
+
+        <p><strong>Complex object 1</strong></p>
+        <format_obj :data="complex_obj_1"></format_obj>
+
+        <p><strong>Complex object 2</strong></p>
+        <format_obj :data="complex_obj_2"></format_obj>
+
+        <p><strong>Complex array</strong></p>
+        <format_obj :data="complex_arr"></format_obj>
+
+        <p><strong>Empty object</strong></p>
+        <format_obj :data="empty_obj"></format_obj>
+
+        <p><strong>Empty array</strong></p>
+        <format_obj :data="empty_arr"></format_obj>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    obj: {
+                        name: 'Simple object',
+                        age: 18
+                    },
+                    arr: [1.5, "horse", false],
+                    val: true,
+                    complex_obj_1: {
+                        name: 'Parent',
+                        age: 32,
+                        children: [
+                            { name: 'Child-1', age: 12 },
+                            { name: 'Child-2', age: 4 },
+                        ]
+                    },
+                    complex_obj_2: {
+                        name: 'Very complex object',
+                        arr: [true, "a", -5.3,
+                            { fruit: 'apple', price: 2.45 }
+                        ],
+                        flag: true,
+                        another_obj: { name: 'Child object', level: 2 }
+                    },
+                    complex_arr: [
+                        "Complex array", 31,
+                        { fruit: 'apple', color: "red" },
+                        ['nested array', { name: 'Yet another object' }]
+                    ],
+                    empty_obj: {},
+                    empty_arr: []
+                };
+            }
+        });
+
+    </script>
+
+    <script src="format_obj.js"></script>
+
+    <script>
+        // mount after component is defined
+        const vm = app.mount('#app');
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Bootstrap CSS, JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <title>P1 solution</title>
+</head>
+
+<body>
+    <div id="main" class="container my-5">
+        <h1><span id="id-name"></span></h1>
+        <span id="id-picture"></span><br>
+        <span id="id-height"></span><br>
+        <span id="id-abilities"></span>
+    </div>
+
+    <script>
+    function getPokemon(){
+        let pokemonName = "ditto";
+        let url = "https://pokeapi.co/api/v2/pokemon/" + pokemonName
+        url = encodeURI(url);
+
+        axios.get(url)
+        .then(response => {
+            obj = response.data;
+            // console.log(obj);
+            height = obj.height;
+            pictureUrl = obj.sprites.front_default;
+            abilityList = obj.abilities; // array
+
+            // display name & height & image URL
+            document.getElementById("id-name").innerText = pokemonName;
+            document.getElementById("id-height").innerText = "Height :" + height;
+            document.getElementById("id-picture").innerText = "Picture URL :" + pictureUrl;
+            document.getElementById("id-abilities").innerText = "Number of abilities :" + abilityList.length;
+        })
+        .catch(error => {
+            console.log(error.message);
+            document.getElementById("id-name").innerText = error.message;
+        });
+    }
+    
+    getPokemon(); // call function
+    </script>
+</body>
+</html>

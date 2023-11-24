@@ -1,0 +1,89 @@
+<!--
+    
+Name:   KIM Jong Un
+Email:  kim.jongun.2022
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP CSS
+    -->
+    <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css">
+
+    <title>Q2 - Oscars</title>
+
+    <!-- CSS (Use this section if you need to) -->
+    <style>
+        #header_div {
+            background-color: #9bfdfd;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+</head>
+<body onload="display_default()">
+
+    
+
+    <!-- Header -->
+    <div class="container-fluid" id="header_div">
+        <h1 class="display-5" style="font-weight: bold;">Oscar Winners</h1>
+    </div>
+    
+
+
+    <!-- Menu -->
+    <div class="container" style="margin-top: 20px; width: 200px">
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                List of Decades
+            </a>
+            
+            <!-- Each decade with corresponding num_winners will be displays as a button -->
+            <div id="decade_list" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                
+            </div>
+        </div>
+
+    </div>
+
+
+    
+    <!-- Oscar Winners as Cards -->
+
+    <div class="container-fluid" style="margin-top: 20px">
+
+        <div id="winner_cards">
+            
+        </div>
+
+    </div>
+    
+
+    
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL BOOTSTRAP JAVASCRIPT
+    -->
+    <script src="../Bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL AXIOS JAVASCRIPT
+    -->
+    <script src="axios.js"></script>
+
+    <!-- DO NOT REMOVE
+         REFERENCE TO LOCAL EXTERNAL JAVASCRIPT
+    -->
+    <script src="oscars.js"></script>
+
+</body>
+</html>

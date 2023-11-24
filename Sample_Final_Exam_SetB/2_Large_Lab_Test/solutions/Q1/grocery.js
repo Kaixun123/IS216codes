@@ -81,13 +81,10 @@ function processItems() {
     }
 
     var checkbox_item_arr = document.getElementsByName("myItems");
-    //console.log(checkbox_item_arr);
-    
 
     // Check if at least 1 item is selected
     var count = 0;
     for(var i = 0; i < checkbox_item_arr.length; i++) {
-        //console.log(checkbox_item_arr[i]);
 
         if( checkbox_item_arr[i].type == "checkbox" ) {
             if( checkbox_item_arr[i].checked == true ) {
@@ -96,8 +93,7 @@ function processItems() {
         }
     }
 
-    // console.log("Count: " + count);
-    // return;
+
 
 
     if( count == 0 ) {

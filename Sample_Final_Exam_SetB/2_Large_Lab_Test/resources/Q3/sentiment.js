@@ -83,7 +83,9 @@ const app = Vue.createApp( {
             },
 
             // DO NOT MODIFY THIS BY MANUALLY EDITING IN THIS FILE
-            img_src: image_sources.neutral
+            img_src: image_sources.neutral,
+
+            date: new Date(),
 
         }
     },
@@ -93,6 +95,7 @@ const app = Vue.createApp( {
         greeting() {
             
             // YOUR CODE GOES HERE
+            return "Hello " + this.date.toLocaleDateString(window.navigator.language, {weekday: 'long'})
 
         }
     },
@@ -101,9 +104,35 @@ const app = Vue.createApp( {
     methods: {
 
         process_entry() {
-            
+            this.sentiment_word_counts.positives = 0;
+            this.sentiment_word_counts.negatives = 0;
+
             // YOUR CODE GOES HERE
-            
+            const stringList = this.journal_entry.replace(regex, "").split(" ")
+            console.log(stringList)
+           //console.log(this.sentiment_word_counts.positives + 1)
+
+            for(string of stringList){
+                console.log(string);
+                if(sentiment_dictionary.positives.includes(string)){
+                    this.sentiment_word_counts.positives += 1
+                    console.log(this.sentiment_word_counts.positives)
+                }else if(sentiment_dictionary.negatives.includes(string)){
+                    this.sentiment_word_counts.negatives += 1
+                    console.log(this.sentiment_word_counts.positives)
+                }else{
+                    console.log("no matching words");
+                }
+            }
+
+            if(this.sentiment_word_counts.positives > this.sentiment_word_counts.negatives){
+                this.img_src = image_sources.positive
+            }else if(this.sentiment_word_counts.positives < this.sentiment_word_counts.negatives){
+                this.img_src = image_sources.negative
+            }else{
+                this.img_src = image_sources.neutral
+            }
+
         }
 
     }

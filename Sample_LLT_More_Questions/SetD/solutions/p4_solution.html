@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Bootstrap CSS, JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <title>P4 solution</title>
+</head>
+
+<body>
+    <div id="main" class="container my-5">
+        <!-- user input -->
+        <div>
+            Pokemon search: <input type="text" v-model="searchField"> 
+            <button @click="getPokemon()">Search</button>
+        </div>
+        <hr> 
+        <!-- either display pokemon... -->
+        <div v-if="successfulSearch">
+            <h1><span>{{ pokemonName }}</span><br></h1>
+            <img :src="picture"><br>
+            <span>Height: {{ height }}</span><br>
+            
+            Abilities:
+            <ul>
+                <li v-for="a in abilityList"> {{ a.ability.name }} </li>
+            </ul>
+
+            <!-- alternative solution for ability list
+            <span v-html="abilityListStr"></span> -->
+        </div>
+        <!-- ... or display error msg -->
+        <div v-else>
+            <h1><span>{{ errorMsg }}</span><br></h1>
+        </div>
+    </div>
+
+    <script>
+    // vue code
+    const app = Vue.createApp({ // create vue instance
+        data() {
+          return {
+              successfulSearch:false, // tracks whether a successful async request is made
+              searchField: 'ditto',   
+              pokemonName: '',
+              height: '',
+              picture: '',
+              // abilityListStr: '', // alternative solution. contains HTML
+              abilityList: [],  // this is a list of abilities (to get name, use abilityList[0].ability.name)
+              errorMsg: ''  // only used if there is an error message
+          };
+        },
+        methods: {
+            getPokemon(){
+                let url = "https://pokeapi.co/api/v2/pokemon/" + this.searchField.toLowerCase();
+                url = encodeURI(url);
+                console.log("debug: visiting.... " + url);
+
+                axios.get(url)
+                .then(response => {
+                    this.successfulSearch = true; 
+                    obj = response.data;
+                    this.pokemonName = this.searchField;
+                    this.height = obj.height;
+                    this.picture = obj.sprites.front_default;
+                    this.abilityList = obj.abilities;
+
+                    // alternative solution: construct abilityList HTML
+                    /*
+                    let temp = "Abilities: <ul>";
+                    for (i=0; i<obj.abilities.length; i++){
+                        temp += "<li>" + obj.abilities[i].ability.name + "</li>"
+                    }
+                    temp +="</ul>";
+                    this.abilityListStr = temp;
+                    */
+                })
+                .catch(error => {
+                    this.successfulSearch = false;
+                    console.log("point Y");
+                    console.log(error.message)
+                    this.errorMsg = error.message;
+                });     
+            }       
+        },
+        created() { // when Vue instance is created
+        }
+    });
+    const vm = app.mount("#main"); // mount
+    </script>
+</body>
+</html>

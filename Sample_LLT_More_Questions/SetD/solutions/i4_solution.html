@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Bootstrap CSS, JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <title>I4 solution</title>
+</head>
+
+<body>
+    <div id="main" class="container my-5">
+        <image-changer src1="./img/singapore.png" src2="./img/malaysia.png" interval=3 :width="widthOfAllImages" :height="heightOfAllImages" caption_pos="bottom" v-on:imgclick="changeSize"> Asian </image-changer><br>
+        <image-changer src1="./img/luxembourg.png" src2="./img/finland.png" interval=5 :width="widthOfAllImages" :height="heightOfAllImages" caption_pos="bottom" v-on:imgclick="changeSize"> Europe </image-changer>
+    </div>
+    <script>
+
+    // vue instance
+    const app = Vue.createApp({
+        data() {
+    	    return { 
+                widthOfAllImages: 300,
+                heightOfAllImages: 200, 
+            }
+        }, 
+        methods: {
+            changeSize(){
+                if (this.widthOfAllImages == 300){
+                    this.widthOfAllImages = 150;
+                    this.heightOfAllImages = 100;
+                } else {
+                    this.widthOfAllImages = 300;
+                    this.heightOfAllImages = 200;                    
+                }
+            }
+        },
+    });
+    // vue component
+    app.component('image-changer',
+    {
+        data() {
+    	    return { 
+                currentsrc: '', 
+            }
+        }, 
+        methods: {
+            changePict(){
+                if (this.currentsrc == this.src1){
+                    this.currentsrc = this.src2;
+                } else {
+                    this.currentsrc = this.src1;
+                }
+                setTimeout(this.changePict, this.interval*1000); // every interval sec
+            }
+        },
+        props: ['src1', 'src2', 'interval', 'width', 'height', 'caption_pos'],
+        template: `<div>
+                      <span v-if="caption_pos=='top'"><slot></slot></span>
+                      <div>
+                        <span v-if="caption_pos=='left'"><slot></slot></span>
+                        <img :src="currentsrc" :width="width" :height="height" @click="$emit('imgclick')">
+                        <span v-if="caption_pos=='right'"><slot></slot></span>
+                      </div>
+                      <span v-if="caption_pos=='bottom'"><slot></slot></span>
+                   </div>`,
+        created(){
+            this.currentsrc = this.src1;
+            this.changePict();
+        }
+    });          
+    // mount instance                 
+    const vm = app.mount("#main");
+    </script>
+</body>
+</html>
